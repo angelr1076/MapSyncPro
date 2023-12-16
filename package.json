@@ -1,0 +1,25 @@
+{
+  "name": "mapsync-pro",
+  "version": "1.0.0",
+  "description": "Map Sync Pro is designed to streamline the integration of user data with geospatial mapping. The tool combines the precision of mapping technologies with the complexity of user-specific data, providing an intuitive interface for geographic and demographic analysis. Whether for business logistics, demographic studies, or custom mapping, Map Sync Pro offers a robust solution for professionals who require detailed, user-focused mapping capabilities.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelr1076/MapSyncPro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelr1076/MapSyncPro/issues"
+  },
+  "homepage": "https://github.com/angelr1076/MapSyncPro#readme",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
