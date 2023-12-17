@@ -1,0 +1,143 @@
+{
+  "data": [
+    {
+      "territoryName": "North San Diego",
+      "lat": "33.158093",
+      "long": "-117.350594",
+      "totalZipCodes": 10,
+      "addresses": [
+        {
+          "customerName": "Alex Doe",
+          "customerAddress": "456 South Road",
+          "zip": "92101",
+          "territory": "North San Diego",
+          "lat": "33.160001",
+          "lng": "-117.350001",
+          "color": "Green",
+          "hex": "008000",
+          "linkToCustomer": "http://example.com/customer/456"
+        },
+        {
+          "customerName": "John Doe",
+          "customerAddress": "123 North Street",
+          "zip": "92102",
+          "territory": "North San Diego",
+          "lat": "33.159000",
+          "lng": "-117.349000",
+          "color": "Blue",
+          "hex": "0000FF",
+          "linkToCustomer": "http://example.com/customer/123"
+        },
+        {
+          "customerName": "Jane Doe",
+          "customerAddress": "124 North Street",
+          "zip": "92103",
+          "territory": "North San Diego",
+          "lat": "33.160002",
+          "lng": "-117.351000",
+          "color": "Red",
+          "hex": "FF0000",
+          "linkToCustomer": "http://example.com/customer/124"
+        },
+        {
+          "customerName": "Emily Doe",
+          "customerAddress": "125 North Avenue",
+          "zip": "92104",
+          "territory": "North San Diego",
+          "lat": "33.161003",
+          "lng": "-117.352001",
+          "color": "Yellow",
+          "hex": "FFFF00",
+          "linkToCustomer": "http://example.com/customer/125"
+        },
+        {
+          "customerName": "Michael Doe",
+          "customerAddress": "126 North Boulevard",
+          "zip": "92105",
+          "territory": "North San Diego",
+          "lat": "33.162004",
+          "lng": "-117.353002",
+          "color": "Purple",
+          "hex": "800080",
+          "linkToCustomer": "http://example.com/customer/126"
+        },
+        {
+          "customerName": "Sarah Doe",
+          "customerAddress": "127 North Lane",
+          "zip": "92106",
+          "territory": "North San Diego",
+          "lat": "33.163005",
+          "lng": "-117.354003",
+          "color": "Orange",
+          "hex": "FFA500",
+          "linkToCustomer": "http://example.com/customer/127"
+        },
+        {
+          "customerName": "David Doe",
+          "customerAddress": "128 North Road",
+          "zip": "92107",
+          "territory": "North San Diego",
+          "lat": "33.164006",
+          "lng": "-117.355004",
+          "color": "Green",
+          "hex": "008000",
+          "linkToCustomer": "http://example.com/customer/128"
+        },
+        {
+          "customerName": "Lisa Doe",
+          "customerAddress": "129 North Park",
+          "zip": "92108",
+          "territory": "North San Diego",
+          "lat": "33.165007",
+          "lng": "-117.356005",
+          "color": "Pink",
+          "hex": "FFC0CB",
+          "linkToCustomer": "http://example.com/customer/129"
+        },
+        {
+          "customerName": "Robert Doe",
+          "customerAddress": "130 North Plaza",
+          "zip": "92109",
+          "territory": "North San Diego",
+          "lat": "33.166008",
+          "lng": "-117.357006",
+          "color": "Cyan",
+          "hex": "00FFFF",
+          "linkToCustomer": "http://example.com/customer/130"
+        },
+        {
+          "customerName": "Alice Doe",
+          "customerAddress": "131 North Terrace",
+          "zip": "92110",
+          "territory": "North San Diego",
+          "lat": "33.167009",
+          "lng": "-117.358007",
+          "color": "Brown",
+          "hex": "A52A2A",
+          "linkToCustomer": "http://example.com/customer/131"
+        }
+      ]
+    },
+    {
+      "territoryName": "East San Diego",
+      "lat": "32.794773",
+      "long": "-116.962527",
+      "totalZipCodes": 8,
+      "addresses": []
+    },
+    {
+      "territoryName": "West San Diego",
+      "lat": "32.715736",
+      "long": "-117.161087",
+      "totalZipCodes": 12,
+      "addresses": []
+    },
+    {
+      "territoryName": "South San Diego",
+      "lat": "32.640054",
+      "long": "-117.084196",
+      "totalZipCodes": 9,
+      "addresses": []
+    }
+  ]
+}

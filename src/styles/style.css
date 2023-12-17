@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+  --montse: 'Montserrat', sans-serif;
+  /* Primary color palette */
+  --white: #fff;
+  --black: #000;
+  --black-blur: #19222e;
+  --black-faded: #233142;
+  --mainly-blue: #264653;
+  --mainly-green: #2a9d8f;
+  --lavender: #dfdbe5;
+  --mustard: #e9c46a;
+  --orangish: #f4a261;
+  --coralish: #e76f51;
+  /* Secondary palette */
+  --lightgray: #e3e3e3;
+  --vanilla: #f2ece4;
+  --seablue: #b2c9d8;
+  --bluehover: #ccdfeb;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--coralish) var(--orangish);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--coralish);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--orangish);
+  border-radius: 20px;
+  border: 3px solid var(--coralish);
+}

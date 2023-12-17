@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MapSyncPro</title>
+  <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js" defer></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js" defer></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" defer></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" defer></script>
 </head>
+
 <body>
-  <div id="main"></div>
+  <!-- Modal content -->
+  <div id="legendModal" class="modal text-primary text-center">
+    <div class="modal-content">
+      <div class="modal-header align-self-center">
+        <h2 id="modal-header-content" class="modal-header-content display-6"></h2>
+      </div>
+      <div class="modal-body">
+        <p id="modal-body-content" class="modal-body-content lead"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container main mt-3">
+    <div id="main" class="main container mx-auto text-center m-2 p-1">
+      <header>
+        <div id="page-header" class="d-flex flex-row bd-highlight mb-3 display-6 text-primary justify-content-around">
+          <div id="page-header__territory-name" class="mt-4"></div>
+          <div id="patient-count" class="patient-count mt-4">
+            <!-- Patient count renders here -->
+          </div>
+        </div>
+      </header>
+      <hr />
+      <section class="container main__map">
+        <div id="map">
+          <!-- Map renders here -->
+        </div>
+      </section>
+      <section id="page-footer" class="page-footer pt-3">
+        <div class="container d-flex p-2">
+          <!-- <p class="d-flex lead text-primary w-100">
+              Tap the colored bubble to view the territory name. Tap anywhere to
+              close.
+            </p> -->
+          <ul id="legend" class="legend d-flex flex-wrap justify-content-center" style="list-style-type: none">
+            <!-- Legend renders here -->
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div id="select-container"
+      class="container d-flex flex-column bd-highlight text-primary justify-content-evenly flex mx-auto text-center m-5 p-5">
+      <img src="" alt="" />
+      <label for="territory-select" class="display-5 m-5">Please Select a Territory:</label>
+      <select name="territories" id="territory-select" class="lead mx-auto p-3 w-25 text-center">
+        <option value="">-- Territory List --</option>
+        <!-- Dynamic list entry point -->
+      </select>
+    </div>
+  </div>
 </body>
+
 </html>
