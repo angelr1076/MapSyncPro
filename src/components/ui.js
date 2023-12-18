@@ -1,4 +1,4 @@
-import { initializeMap, updateMap } from './map.js';
+import { initMap } from './map.js';
 import data from '../data/territories.json';
 import '../styles/style.css';
 
@@ -28,29 +28,36 @@ const handleUserChoice = (territories, choice, callback) => {
   }
 };
 
+function showElement(element) {
+  element.classList.add('show');
+  element.classList.remove('hidden');
+}
+
+function hideElement(element) {
+  element.classList.add('hidden');
+  element.classList.remove('show');
+}
+
 // Function to show or hide UI elements
 function toggleUIElements(showMap) {
   if (showMap) {
-    mapDisplay.style.display = 'block';
-    selectContainer.classList.add('hidden');
-    pageFooter.style.display = 'none';
+    showElement(mapDisplay);
+    hideElement(selectContainer);
+    hideElement(pageFooter);
   } else {
-    mapDisplay.style.display = 'none';
-    selectContainer.classList.remove('hidden');
-    pageFooter.style.display = 'block';
+    hideElement(mapDisplay);
+    showElement(selectContainer);
+    showElement(pageFooter);
   }
 }
-
-// Initialize the map on page load
-initializeMap();
 
 // Event listener for territory selection
 selectList.addEventListener('change', e => {
   const selectorChoice = e.target.value;
   handleUserChoice(data.data, selectorChoice, chosenTerritory => {
-    updateMap(chosenTerritory);
+    toggleUIElements(true);
+    initMap(chosenTerritory);
   });
-  toggleUIElements(true);
 });
 
 // document.querySelector('button').onclick = () => {

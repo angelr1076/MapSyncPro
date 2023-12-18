@@ -1,4 +1,4 @@
-// If in the future I plan to scale the application to use real-time data or larger datasets that might not be feasible to store locally, maintaining the API functionality would be beneficial, so I'm keeping it. I initially wrote this and pulled from a database, and want to keep that part intact, even if it's not necessary for this project.
+// If in the future I plan to scale the application to use real-time data or larger datasets that might not be feasible to store locally, maintaining the API functionality would be beneficial, so I'm keeping it. I initially wrote this and pulled from a database, and want to keep that part intact.
 
 // These would come from a .env file in a real app
 const realmName = 'realmName';
@@ -36,23 +36,17 @@ const fetchTerritories = () => {
   });
 };
 
-// Fetch patient data from the API
+// Fetch customer data from the API
 const fetchCustomers = searchQuery => {
   const customerData = {
     from: customersTable,
     select: [
-      'assignedTC',
       'mapColor',
-      'marketingRep',
-      'patientAddress',
-      'therapyBillingStatus',
-      'patientName',
+      'customerAddress',
+      'customerName',
       'primaryItemGroup',
       'territoryName',
-      'linkToPatient',
-      'outcomesLead',
-      'primarySC',
-      'primaryAddress',
+      'linkToCustomer',
       'colorHex',
     ],
 

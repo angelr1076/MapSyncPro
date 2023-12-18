@@ -8,31 +8,23 @@ const platform = new H.service.Platform({
 const defaultLayers = platform.createDefaultLayers();
 let map;
 
-// Function to initialize the map
-function initializeMap() {
+// Function to set the map based on chosen territory
+function initMap(chosenTerritory) {
   map = new H.Map(
-    document.getElementById('map'),
+    document.querySelector('#map'),
     defaultLayers.vector.normal.map,
     {
-      center: { lat: 33.158093, lng: -117.350594 }, // Default center
+      center: { lat: chosenTerritory.lat, lng: chosenTerritory.long },
       zoom: 10, // Default zoom
       pixelRatio: window.devicePixelRatio || 1,
     }
   );
 
-  window.addEventListener('resize', () => map.getViewPort().resize());
-  const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   const ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
   ui.setUnitSystem('imperial');
+
+  window.addEventListener('resize', () => map.getViewPort().resize());
+  const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 }
 
-// Function to update the map based on chosen territory
-function updateMap(chosenTerritory) {
-  map.setCenter({
-    lat: parseFloat(chosenTerritory.lat),
-    lng: parseFloat(chosenTerritory.long),
-  });
-  map.setZoom(10);
-}
-
-export { initializeMap, updateMap };
+export { initMap };
