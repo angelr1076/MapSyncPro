@@ -53,4 +53,8 @@ selectList.addEventListener('change', e => {
   toggleUIElements(true);
 });
 
-export { populateTerritorySelect, handleUserChoice, toggleUIElements };
+// document.querySelector('button').onclick = () => {
+//   window.location.reload();
+// };
+
+export { populateTerritorySelect };

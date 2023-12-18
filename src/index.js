@@ -1,31 +1,13 @@
-import {
-  populateTerritorySelect,
-  handleUserChoice,
-  toggleUIElements,
-} from './components/ui.js';
+import { populateTerritorySelect } from './components/ui.js';
 import data from './data/territories.json';
 
-// Function to initialize the app
+// Function to initialize the app and populate the territory selection dropdown
 function initApp() {
   populateTerritorySelect(data.data); // Use data from territories.json
 }
 
-// Event listener for territory selection
-document.querySelector('#territory-select').addEventListener('change', e => {
-  const selectedTerritory = e.target.value;
-  handleUserChoice(data.data, selectedTerritory, chosenTerritory => {
-    // Process the chosen territory data
-    // console.log(chosenTerritory);
-  });
-  toggleUIElements(true); // Show the map and hide other elements
-});
-
 // Initial application setup
 initApp();
-
-// document.querySelector('button').onclick = () => {
-//   window.location.reload();
-// };
 
 // Optionally, if you want to do something when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
