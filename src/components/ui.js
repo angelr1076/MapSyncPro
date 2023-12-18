@@ -1,5 +1,6 @@
 import { initializeMap, updateMap } from './map.js';
 import data from '../data/territories.json';
+import '../styles/style.css';
 
 const selectList = document.querySelector('#territory-select');
 const mapDisplay = document.querySelector('#main');
@@ -47,7 +48,6 @@ initializeMap();
 selectList.addEventListener('change', e => {
   const selectorChoice = e.target.value;
   handleUserChoice(data.data, selectorChoice, chosenTerritory => {
-    // Use chosenTerritory here for further actions, such as updating the map
     updateMap(chosenTerritory);
   });
   toggleUIElements(true);

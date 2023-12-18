@@ -19,7 +19,6 @@ function initializeMap() {
   );
 
   window.addEventListener('resize', () => map.getViewPort().resize());
-  // Behavior implements default interactions for pan/zoom
   const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   const ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
   ui.setUnitSystem('imperial');
@@ -31,7 +30,7 @@ function updateMap(chosenTerritory) {
     lat: parseFloat(chosenTerritory.lat),
     lng: parseFloat(chosenTerritory.long),
   });
-  map.setZoom(10); // Adjust zoom level as needed
+  map.setZoom(10);
 }
 
 export { initializeMap, updateMap };

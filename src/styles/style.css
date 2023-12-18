@@ -45,8 +45,57 @@
   border: 3px solid var(--coralish);
 }
 
-#map {
-  height: 400px;
+body {
+  color: #0f1621;
+  background-color: transparent;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: inherit;
+  margin-left: 0px;
   width: 100%;
-  background-color: grey;
+}
+
+.container p {
+  max-width: 640px;
+  text-rendering: optimizeLegibility;
+}
+
+#main {
+  display: none;
+}
+
+#selectOption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4em;
+  padding: 2em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#map {
+  width: 95%;
+  height: 450px;
+  background-color: #e4e6e9;
+}
+
+#panel {
+  width: vw100;
+  overflow: auto;
+  background: inherit;
 }
