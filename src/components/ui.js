@@ -20,6 +20,7 @@ const populateTerritorySelect = () => {
 const handleUserChoice = (territories, choice, callback) => {
   const chosenTerritory = territories.find(t => t.territoryName === choice);
   if (chosenTerritory) {
+    console.log(chosenTerritory);
     callback(chosenTerritory);
   } else {
     console.error('Chosen territory not found');

@@ -15,7 +15,7 @@ document.querySelector('#territory-select').addEventListener('change', e => {
   const selectedTerritory = e.target.value;
   handleUserChoice(data.data, selectedTerritory, chosenTerritory => {
     // Process the chosen territory data
-    console.log(chosenTerritory);
+    // console.log(chosenTerritory);
   });
   toggleUIElements(true); // Show the map and hide other elements
 });
@@ -23,7 +23,6 @@ document.querySelector('#territory-select').addEventListener('change', e => {
 // Initial application setup
 initApp();
 
-// Optional: Home button functionality
 // document.querySelector('button').onclick = () => {
 //   window.location.reload();
 // };

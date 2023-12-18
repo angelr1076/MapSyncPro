@@ -1,10 +1,10 @@
 const platform = new H.service.Platform({
   apikey: process.env.API_KEY,
-  useHTTPS: true,
+  // useHTTPS: true,
 });
 
 const defaultLayers = platform.createDefaultLayers();
-let map, ui, behavior;
+let map;
 
 // Function to initialize the map
 function initializeMap() {
@@ -18,8 +18,11 @@ function initializeMap() {
     }
   );
 
-  behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-  ui = H.ui.UI.createDefault(map, defaultLayers);
+  window.addEventListener('resize', () => map.getViewPort().resize());
+  // Behavior implements default interactions for pan/zoom
+  const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  const ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+  ui.setUnitSystem('imperial');
 }
 
 // Function to update the map based on chosen territory
