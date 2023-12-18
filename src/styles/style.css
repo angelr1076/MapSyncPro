@@ -84,10 +84,6 @@ body {
   padding: 2em;
 }
 
-.hidden {
-  display: none !important;
-}
-
 #map {
   width: 95%;
   height: 450px;
@@ -98,4 +94,8 @@ body {
   width: vw100;
   overflow: auto;
   background: inherit;
+}
+
+.hidden {
+  display: none !important;
 }

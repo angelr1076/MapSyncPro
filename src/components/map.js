@@ -1,6 +1,8 @@
+import '../styles/style.css';
+
 const platform = new H.service.Platform({
   apikey: process.env.API_KEY,
-  // useHTTPS: true,
+  useHTTPS: true,
 });
 
 const defaultLayers = platform.createDefaultLayers();

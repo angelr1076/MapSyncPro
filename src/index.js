@@ -9,7 +9,6 @@ function initApp() {
 // Initial application setup
 initApp();
 
-// Optionally, if you want to do something when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Application initialized');
 });

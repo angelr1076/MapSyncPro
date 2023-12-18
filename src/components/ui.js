@@ -2,9 +2,9 @@ import { initializeMap, updateMap } from './map.js';
 import data from '../data/territories.json';
 import '../styles/style.css';
 
+const selectContainer = document.querySelector('#select-container');
 const selectList = document.querySelector('#territory-select');
 const mapDisplay = document.querySelector('#main');
-const selectContainer = document.querySelector('#select-container');
 const pageFooter = document.querySelector('#page-footer');
 
 // Function to populate the territory selection dropdown
