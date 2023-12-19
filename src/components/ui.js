@@ -6,8 +6,18 @@ const selectContainer = document.querySelector('#select-container');
 const selectList = document.querySelector('#territory-select');
 const mapDisplay = document.querySelector('#main');
 const pageFooter = document.querySelector('#page-footer');
+const pageHeaderTerritoryName = document.querySelector(
+  '#page-header__territory-name'
+);
+const customerCountElement = document.querySelector('#customer-count');
 
-// Function to populate the territory selection dropdown
+// Update customer count in the UI
+function updateCustomerCount(territory) {
+  const count = territory.addresses.length;
+  customerCountElement.textContent = `${count} Customers`;
+}
+
+// Populate the territory selection dropdown
 const populateTerritorySelect = () => {
   data.data.forEach(territory => {
     const option = document.createElement('option');
@@ -17,11 +27,13 @@ const populateTerritorySelect = () => {
   });
 };
 
-// Function to handle user's territory choice
+// Handle user's territory choice
 const handleUserChoice = (territories, choice, callback) => {
   const chosenTerritory = territories.find(t => t.territoryName === choice);
   if (chosenTerritory) {
     console.log(chosenTerritory);
+    updateCustomerCount(chosenTerritory);
+    pageHeaderTerritoryName.textContent = chosenTerritory.territoryName;
     callback(chosenTerritory);
   } else {
     console.error('Chosen territory not found');
@@ -38,7 +50,7 @@ function hideElement(element) {
   element.classList.remove('show');
 }
 
-// Function to show or hide UI elements
+// Show or hide UI elements
 function toggleUIElements(showMap) {
   if (showMap) {
     showElement(mapDisplay);
@@ -51,7 +63,7 @@ function toggleUIElements(showMap) {
   }
 }
 
-// Event listener for territory selection
+// Territory selection
 selectList.addEventListener('change', e => {
   const selectorChoice = e.target.value;
   handleUserChoice(data.data, selectorChoice, chosenTerritory => {

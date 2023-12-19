@@ -13,8 +13,8 @@
           "territory": "North San Diego",
           "lat": "33.160001",
           "lng": "-117.350001",
-          "color": "Green",
-          "hex": "008000",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/456"
         },
         {
@@ -24,8 +24,8 @@
           "territory": "North San Diego",
           "lat": "33.159000",
           "lng": "-117.349000",
-          "color": "Blue",
-          "hex": "0000FF",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/123"
         },
         {
@@ -35,8 +35,8 @@
           "territory": "North San Diego",
           "lat": "33.160002",
           "lng": "-117.351000",
-          "color": "Red",
-          "hex": "FF0000",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/124"
         },
         {
@@ -46,8 +46,8 @@
           "territory": "North San Diego",
           "lat": "33.161003",
           "lng": "-117.352001",
-          "color": "Yellow",
-          "hex": "FFFF00",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/125"
         },
         {
@@ -57,8 +57,8 @@
           "territory": "North San Diego",
           "lat": "33.162004",
           "lng": "-117.353002",
-          "color": "Purple",
-          "hex": "800080",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/126"
         },
         {
@@ -68,8 +68,8 @@
           "territory": "North San Diego",
           "lat": "33.163005",
           "lng": "-117.354003",
-          "color": "Orange",
-          "hex": "FFA500",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/127"
         },
         {
@@ -79,8 +79,8 @@
           "territory": "North San Diego",
           "lat": "33.164006",
           "lng": "-117.355004",
-          "color": "Green",
-          "hex": "008000",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/128"
         },
         {
@@ -90,8 +90,8 @@
           "territory": "North San Diego",
           "lat": "33.165007",
           "lng": "-117.356005",
-          "color": "Pink",
-          "hex": "FFC0CB",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/129"
         },
         {
@@ -101,8 +101,8 @@
           "territory": "North San Diego",
           "lat": "33.166008",
           "lng": "-117.357006",
-          "color": "Cyan",
-          "hex": "00FFFF",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/130"
         },
         {
@@ -112,8 +112,8 @@
           "territory": "North San Diego",
           "lat": "33.167009",
           "lng": "-117.358007",
-          "color": "Brown",
-          "hex": "A52A2A",
+          "color": "Coral",
+          "hex": "ff7f50",
           "linkToCustomer": "http://example.com/customer/131"
         }
       ]
