@@ -2,10 +2,11 @@
 
 :root {
   --montse: 'Montserrat', sans-serif;
-  /* Primary color palette */
+  --text-color: #000;
+  --button-text-color: #000;
   --white: #fff;
   --black: #000;
-  --black-blur: #19222e;
+  --black-blur: #333;
   --black-faded: #233142;
   --mainly-blue: #264653;
   --mainly-green: #2a9d8f;
@@ -18,6 +19,24 @@
   --vanilla: #f2ece4;
   --seablue: #b2c9d8;
   --bluehover: #ccdfeb;
+
+  [data-theme='dark'] {
+    --background-color: var(--black-blur);
+    --button-background-color: var(--white);
+    --button-background-hover-color: var(--white);
+    --button-text-hover-color: var(--black);
+    --text-color: var(--white);
+    --button-text-color: var(--black);
+  }
+
+  [data-theme='light'] {
+    --background-color: var(--white);
+    --button-background-color: var(--black-blur);
+    --button-background-hover-color: var(--black-faded);
+    --button-text-hover-color: var(--white);
+    --text-color: var(--black);
+    --button-text-color: var(--white);
+  }
 }
 
 *,
@@ -46,14 +65,15 @@
 }
 
 body {
-  background-color: transparent;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-size: 16px;
   line-height: 22px;
   font-family: var(--montse), 'Franklin Gothic Medium', 'Arial Narrow', Arial,
     sans-serif;
 }
 
-.container {
+.home {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -61,6 +81,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.mode-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .container p {
@@ -85,13 +112,42 @@ body {
   display: none;
 }
 
-button {
+.map-icon {
+  color: var(--text-color);
+}
+
+button,
+.btn {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
 
 button:hover {
   transform: scale(1.05);
+  background-color: var(--button-background-hover-color);
+  color: var(--button-text-hover-color);
+}
+
+.page-header,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+label,
+li,
+span,
+select,
+option,
+textarea {
+  color: var(--text-color);
 }
 
 .button-container {

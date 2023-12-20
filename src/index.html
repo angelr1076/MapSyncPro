@@ -29,17 +29,36 @@
     </div>
   </div>
 
-  <div class="container main mt-3">
+  <div class="home mt-3">
+    <section id="select-container" class="d-flex flex-column bd-highlight text-primary mx-auto text-center m-5 p-5">
+      <h1 class="display-4">Map-Sync-Pro</h1>
+      <div class="map-icon"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
+          class="bi bi-globe-americas" viewBox="0 0 16 16">
+          <path
+            d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+        </svg></div>
+      <div name="territories" id="territory-select" class="territory-select bd-highlight lead mx-auto p-1">
+        <p for="territory-select" class="display-6 mt-2 mb-2">Please Select a Territory</p>
+        <div id="button-container" class="button-container p-4">
+          <!-- Button list entry point -->
+        </div>
+      </div>
+    </section>
+    <div class="mode-toggle">
+      <i id="light-mode-icon" class="bi bi-brightness-high"></i>
+      <i id="dark-mode-icon" class="bi bi-moon-stars" style="display: none;"></i>
+    </div>
     <div id="main" class="main mx-auto text-center m-2 p-1">
       <header>
         <div id="page-header"
-          class="d-flex flex-row bd-highlight mb-3 info text-primary justify-content-between align-items-baseline">
+          class="page-header d-flex flex-row bd-highlight mb-3 info justify-content-between align-items-baseline">
           <a id="back-button" class="btn btn-outline-primary btn-sm" role="button"><i class="bi bi-house-door"></i>
             Back</a>
-          <div id="page-header__territory-name" class="display-6 mt-4"></div>
+          <div id="territory-name" class="display-6 mt-4"></div>
           <div id="customer-count" class="customer-count lead mt-4">
             <!-- Customer count renders here -->
           </div>
+
         </div>
       </header>
       <hr />
@@ -59,22 +78,6 @@
           </ul>
         </div>
       </section>
-    </div>
-
-    <div id="select-container" class="d-flex flex-column bd-highlight text-primary mx-auto text-center m-5 p-5">
-      <img src="" alt="" />
-      <h1 class="display-4">Map-Sync-Pro</h1>
-      <div class="map-icon"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
-          class="bi bi-globe-americas" viewBox="0 0 16 16">
-          <path
-            d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
-        </svg></div>
-      <div name="territories" id="territory-select" class="territory-select bd-highlight lead mx-auto p-1">
-        <label for="territory-select" class="display-6 text-primary mt-2 mb-2">Please Select a Territory</label>
-        <div id="button-container" class="button-container p-4">
-          <!-- Button list entry point -->
-        </div>
-      </div>
     </div>
   </div>
 </body>

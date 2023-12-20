@@ -4,13 +4,12 @@ import '../styles/style.css';
 
 const selectContainer = document.querySelector('#select-container');
 const buttonContainer = document.querySelector('#button-container');
-const territorySelect = document.querySelector('#territory-select');
 const backButton = document.querySelector('#back-button');
+const lightModeButton = document.querySelector('#light-mode-icon');
+const darkModeButton = document.querySelector('#dark-mode-icon');
 const mapDisplay = document.querySelector('#main');
 const pageFooter = document.querySelector('#page-footer');
-const pageHeaderTerritoryName = document.querySelector(
-  '#page-header__territory-name'
-);
+const pageHeaderTerritoryName = document.querySelector('#territory-name');
 const customerCountElement = document.querySelector('#customer-count');
 
 // Update customer count in the UI
@@ -67,8 +66,27 @@ function toggleUIElements(showMap) {
   }
 }
 
+function toggleMode() {
+  const body = document.body;
+  const lightIcon = lightModeButton;
+  const darkIcon = darkModeButton;
+
+  if (body.getAttribute('data-theme') === 'dark') {
+    body.setAttribute('data-theme', 'light');
+    lightIcon.style.display = 'none';
+    darkIcon.style.display = 'block';
+  } else {
+    body.setAttribute('data-theme', 'dark');
+    darkIcon.style.display = 'none';
+    lightIcon.style.display = 'block';
+  }
+}
+
+// Event listeners
+lightModeButton.addEventListener('click', toggleMode);
+darkModeButton.addEventListener('click', toggleMode);
 backButton.addEventListener('click', () => {
   toggleUIElements(false);
 });
 
-export { createTerritoryButtons };
+export { createTerritoryButtons, toggleMode };
