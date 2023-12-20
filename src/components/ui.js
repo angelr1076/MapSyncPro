@@ -3,7 +3,9 @@ import data from '../data/territories.json';
 import '../styles/style.css';
 
 const selectContainer = document.querySelector('#select-container');
-const selectList = document.querySelector('#territory-select');
+const buttonContainer = document.querySelector('#button-container');
+const territorySelect = document.querySelector('#territory-select');
+const backButton = document.querySelector('#back-button');
 const mapDisplay = document.querySelector('#main');
 const pageFooter = document.querySelector('#page-footer');
 const pageHeaderTerritoryName = document.querySelector(
@@ -17,24 +19,26 @@ function updateCustomerCount(territory) {
   customerCountElement.textContent = `${count} Customers`;
 }
 
-// Populate the territory selection dropdown
-const populateTerritorySelect = () => {
+// Create buttons for each territory
+const createTerritoryButtons = () => {
   data.data.forEach(territory => {
-    const option = document.createElement('option');
-    option.value = territory.territoryName;
-    option.text = territory.territoryName;
-    selectList.appendChild(option);
+    const button = document.createElement('button');
+    button.textContent = territory.territoryName;
+    button.classList.add('btn', 'btn-primary', 'm-2');
+    button.onclick = () => handleUserChoice(territory.territoryName);
+    buttonContainer.appendChild(button);
   });
 };
 
 // Handle user's territory choice
-const handleUserChoice = (territories, choice, callback) => {
-  const chosenTerritory = territories.find(t => t.territoryName === choice);
+const handleUserChoice = choice => {
+  const chosenTerritory = data.data.find(t => t.territoryName === choice);
   if (chosenTerritory) {
     console.log(chosenTerritory);
     updateCustomerCount(chosenTerritory);
     pageHeaderTerritoryName.textContent = chosenTerritory.territoryName;
-    callback(chosenTerritory);
+    toggleUIElements(true);
+    initMap(chosenTerritory);
   } else {
     console.error('Chosen territory not found');
   }
@@ -63,17 +67,8 @@ function toggleUIElements(showMap) {
   }
 }
 
-// Territory selection
-selectList.addEventListener('change', e => {
-  const selectorChoice = e.target.value;
-  handleUserChoice(data.data, selectorChoice, chosenTerritory => {
-    toggleUIElements(true);
-    initMap(chosenTerritory);
-  });
+backButton.addEventListener('click', () => {
+  toggleUIElements(false);
 });
 
-// document.querySelector('button').onclick = () => {
-//   window.location.reload();
-// };
-
-export { populateTerritorySelect };
+export { createTerritoryButtons };

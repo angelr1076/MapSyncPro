@@ -59,14 +59,23 @@ function addMarkersToMap(customers) {
 
 // Initialize HERE Map
 function initMap(chosenTerritory) {
+  const lat = parseFloat(chosenTerritory.lat);
+  const lng = parseFloat(chosenTerritory.long);
+
   if (map) {
+    // Clear existing markers
     map.removeObjects(map.getObjects());
+
+    // Re-center the map to the new territory
+    map.setCenter({ lat, lng });
+    map.setZoom(14);
   } else {
+    // Initialize the map if it doesn't exist
     map = new H.Map(
       document.querySelector('#map'),
       defaultLayers.vector.normal.map,
       {
-        center: { lat: chosenTerritory.lat, lng: chosenTerritory.long },
+        center: { lat, lng },
         zoom: 14,
         pixelRatio: window.devicePixelRatio || 1,
       }
@@ -77,7 +86,6 @@ function initMap(chosenTerritory) {
     behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   }
 
-  window.addEventListener('resize', () => map.getViewPort().resize());
   addMarkersToMap(chosenTerritory.addresses);
 }
 

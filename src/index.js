@@ -1,11 +1,10 @@
-import { populateTerritorySelect } from './components/ui.js';
+import { createTerritoryButtons } from './components/ui.js';
 import data from './data/territories.json';
 
 // Initialize the app and populate the territory selection dropdown
 function initApp() {
-  populateTerritorySelect(data.data);
+  createTerritoryButtons();
 }
-
 // Initial application setup
 initApp();
 
