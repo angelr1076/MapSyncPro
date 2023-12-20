@@ -23,7 +23,7 @@ const createTerritoryButtons = () => {
   data.data.forEach(territory => {
     const button = document.createElement('button');
     button.textContent = territory.territoryName;
-    button.classList.add('btn', 'btn-primary', 'm-2');
+    button.classList.add('btn', 'm-2');
     button.onclick = () => handleUserChoice(territory.territoryName);
     buttonContainer.appendChild(button);
   });

@@ -5,6 +5,7 @@
   --text-color: #000;
   --button-text-color: #000;
   --white: #fff;
+  --offwhite: #f8f8f8;
   --black: #000;
   --black-blur: #333;
   --black-faded: #233142;
@@ -23,7 +24,7 @@
   [data-theme='dark'] {
     --background-color: var(--black-blur);
     --button-background-color: var(--white);
-    --button-background-hover-color: var(--white);
+    --button-background-hover-color: var(--offwhite);
     --button-text-hover-color: var(--black);
     --text-color: var(--white);
     --button-text-color: var(--black);
@@ -120,14 +121,23 @@ button,
 .btn {
   background-color: var(--button-background-color);
   color: var(--button-text-color);
+  border: none;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
   transform: scale(1.05);
   background-color: var(--button-background-hover-color);
   color: var(--button-text-hover-color);
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.95);
+  background-color: var(--button-background-color) !important;
+  color: var(--button-text-color) !important;
 }
 
 .page-header,
