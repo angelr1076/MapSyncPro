@@ -31,10 +31,12 @@ function addMarkersToMap(customers) {
 
     const bubbleHtml = `
       <div>
-        <b>Name:</b> ${customer.customerName}<br>
-        <b>Address:</b> ${customer.customerAddress}<br>
+        <b>${customer.customerName}</b><br>
+        <b>${customer.customerAddress}</b><br>
+        <b>${customer.zip}</b><br>
+        <b>${customer.territory}</b><br>
         <hr>
-        <b>Link:</b> <a href="${customer.linkToCustomer}" target="_blank">Weblink</a>
+        <b><a href="${customer.linkToCustomer}" target="_blank">Weblink</a></b> 
       </div>`;
 
     customerMarker.setData(bubbleHtml);
@@ -58,7 +60,7 @@ function addMarkersToMap(customers) {
 }
 
 // Initialize HERE Map
-function initMap(chosenTerritory) {
+function initMap(chosenTerritory, zoom = 14) {
   const lat = parseFloat(chosenTerritory.lat);
   const lng = parseFloat(chosenTerritory.long);
 
@@ -68,7 +70,7 @@ function initMap(chosenTerritory) {
 
     // Re-center the map to the new territory
     map.setCenter({ lat, lng });
-    map.setZoom(14);
+    map.setZoom(zoom);
   } else {
     // Initialize the map if it doesn't exist
     map = new H.Map(
@@ -76,7 +78,7 @@ function initMap(chosenTerritory) {
       defaultLayers.vector.normal.map,
       {
         center: { lat, lng },
-        zoom: 14,
+        zoom,
         pixelRatio: window.devicePixelRatio || 1,
       }
     );
@@ -89,4 +91,4 @@ function initMap(chosenTerritory) {
   addMarkersToMap(chosenTerritory.addresses);
 }
 
-export { addMarkersToMap, initMap };
+export { initMap };

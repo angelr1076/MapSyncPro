@@ -2,41 +2,41 @@
   "data": [
     {
       "territoryName": "North San Diego",
-      "lat": 33.158093,
-      "long": -117.350594,
+      "lat": "33.158093",
+      "long": "-117.350594",
       "totalZipCodes": 10,
       "addresses": [
         {
-          "customerName": "Alex Doe",
-          "customerAddress": "456 South Road",
-          "zip": "92101",
+          "customerName": "Alex Smith",
+          "customerAddress": "456 El Camino Real, San Diego, CA 92024",
+          "zip": "92024",
           "territory": "North San Diego",
-          "lat": "33.160001",
-          "lng": "-117.350001",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.160101,
+          "lng": -117.347501,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/456"
         },
         {
-          "customerName": "John Doe",
-          "customerAddress": "123 North Street",
-          "zip": "92102",
+          "customerName": "John Johnson",
+          "customerAddress": "789 Valley Ave, San Diego, CA 92024",
+          "zip": "92024",
           "territory": "North San Diego",
-          "lat": "33.159000",
-          "lng": "-117.349000",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.162301,
+          "lng": -117.348702,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/123"
         },
         {
-          "customerName": "Jane Doe",
-          "customerAddress": "124 North Street",
-          "zip": "92103",
+          "customerName": "Emily White",
+          "customerAddress": "123 Hilltop Rd, San Diego, CA 92024",
+          "zip": "92024",
           "territory": "North San Diego",
-          "lat": "33.160002",
-          "lng": "-117.351000",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.164403,
+          "lng": -117.349803,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/124"
         },
         {
@@ -46,8 +46,8 @@
           "territory": "North San Diego",
           "lat": "33.161003",
           "lng": "-117.352001",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/125"
         },
         {
@@ -57,87 +57,354 @@
           "territory": "North San Diego",
           "lat": "33.162004",
           "lng": "-117.353002",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/126"
+        },
+        {
+          "customerName": "Emily Doe",
+          "customerAddress": "2775 Ocean St, Carlsbad, CA 92008",
+          "zip": "92008",
+          "territory": "North San Diego",
+          "lat": 33.147231,
+          "lng": -117.345509,
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/125"
+        },
+        {
+          "customerName": "Michael Doe",
+          "customerAddress": "100 Grand Caribe Causeway, Coronado, CA 92118",
+          "zip": "92011",
+          "territory": "North San Diego",
+          "lat": 32.622381,
+          "lng": -117.135148,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/126"
         },
         {
           "customerName": "Sarah Doe",
-          "customerAddress": "127 North Lane",
-          "zip": "92106",
+          "customerAddress": "2580 El Camino Real, Carlsbad, CA 92008",
+          "zip": "92008",
           "territory": "North San Diego",
-          "lat": "33.163005",
-          "lng": "-117.354003",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.178194,
+          "lng": -117.344498,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/127"
         },
         {
           "customerName": "David Doe",
-          "customerAddress": "128 North Road",
-          "zip": "92107",
+          "customerAddress": "2620-2698 State St, Carlsbad, CA 92008",
+          "zip": "92008",
           "territory": "North San Diego",
-          "lat": "33.164006",
-          "lng": "-117.355004",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.163104,
+          "lng": -117.351232,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/128"
         },
         {
           "customerName": "Lisa Doe",
-          "customerAddress": "129 North Park",
-          "zip": "92108",
+          "customerAddress": "2624-2698 Carlsbad Blvd, Carlsbad, CA 92008",
+          "zip": "92008",
           "territory": "North San Diego",
-          "lat": "33.165007",
-          "lng": "-117.356005",
-          "color": "Coral",
-          "hex": "ff7f50",
+          "lat": 33.158383,
+          "lng": -117.350876,
+          "color": "Black",
+          "hex": "000",
           "linkToCustomer": "http://example.com/customer/129"
-        },
-        {
-          "customerName": "Robert Doe",
-          "customerAddress": "130 North Plaza",
-          "zip": "92109",
-          "territory": "North San Diego",
-          "lat": "33.166008",
-          "lng": "-117.357006",
-          "color": "Coral",
-          "hex": "ff7f50",
-          "linkToCustomer": "http://example.com/customer/130"
-        },
-        {
-          "customerName": "Alice Doe",
-          "customerAddress": "131 North Terrace",
-          "zip": "92110",
-          "territory": "North San Diego",
-          "lat": "33.167009",
-          "lng": "-117.358007",
-          "color": "Coral",
-          "hex": "ff7f50",
-          "linkToCustomer": "http://example.com/customer/131"
         }
       ]
     },
     {
       "territoryName": "East San Diego",
-      "lat": 32.794773,
-      "long": -116.962527,
+      "lat": "32.792469",
+      "long": "-117.038747",
       "totalZipCodes": 8,
-      "addresses": []
+      "addresses": [
+        {
+          "customerName": "Alice Doe",
+          "customerAddress": "6200 Lake Arrowhead Dr, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.802167",
+          "lng": "-117.024255",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/1"
+        },
+        {
+          "customerName": "Bob Doe",
+          "customerAddress": "7001 Murray Park Dr, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.804828",
+          "lng": "-117.020484",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/2"
+        },
+        {
+          "customerName": "Charlie Doe",
+          "customerAddress": "6900 Golfcrest Dr, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.802437",
+          "lng": "-117.031922",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/3"
+        },
+        {
+          "customerName": "David Doe",
+          "customerAddress": "8505 Lake Murray Blvd, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.792469",
+          "lng": "-117.038747",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/4"
+        },
+        {
+          "customerName": "Evelyn Doe",
+          "customerAddress": "6540 Park Ridge Blvd, San Diego, CA 92120",
+          "zip": "92120",
+          "territory": "East San Diego",
+          "lat": "32.787941",
+          "lng": "-117.057683",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/5"
+        },
+        {
+          "customerName": "Frank Doe",
+          "customerAddress": "6771 Jackson Dr, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.796745",
+          "lng": "-117.038932",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/6"
+        },
+        {
+          "customerName": "Georgia Doe",
+          "customerAddress": "6850 Mission Gorge Rd, San Diego, CA 92120",
+          "zip": "92120",
+          "territory": "East San Diego",
+          "lat": "32.783895",
+          "lng": "-117.066176",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/7"
+        },
+        {
+          "customerName": "Henry Doe",
+          "customerAddress": "8001 Lake Andrita Ave, San Diego, CA 92119",
+          "zip": "92119",
+          "territory": "East San Diego",
+          "lat": "32.794196",
+          "lng": "-117.044142",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/8"
+        }
+      ]
     },
     {
       "territoryName": "West San Diego",
-      "lat": 32.715736,
-      "long": -117.161087,
-      "totalZipCodes": 12,
-      "addresses": []
+      "lat": 32.7898409,
+      "long": -117.1676463,
+      "totalZipCodes": 8,
+      "addresses": [
+        {
+          "customerName": "Alice Doe",
+          "customerAddress": "9210 Sky Park Ct, San Diego, CA 92123",
+          "zip": "92123",
+          "territory": "East San Diego",
+          "lat": "32.807255",
+          "lng": "-117.139591",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/1"
+        },
+        {
+          "customerName": "Bob Doe",
+          "customerAddress": "5401 Linda Vista Rd, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "East San Diego",
+          "lat": "32.767875",
+          "lng": "-117.192405",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/2"
+        },
+        {
+          "customerName": "Charlie Doe",
+          "customerAddress": "4380 Kearny Mesa Rd, San Diego, CA 92111",
+          "zip": "92111",
+          "territory": "East San Diego",
+          "lat": "32.821907",
+          "lng": "-117.154258",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/3"
+        },
+        {
+          "customerName": "David Doe",
+          "customerAddress": "5500 Gaines St, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "East San Diego",
+          "lat": "32.755943",
+          "lng": "-117.209789",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/4"
+        },
+        {
+          "customerName": "Evelyn Doe",
+          "customerAddress": "3091 Clairemont Dr, San Diego, CA 92117",
+          "zip": "92117",
+          "territory": "East San Diego",
+          "lat": "32.797874",
+          "lng": "-117.199530",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/5"
+        },
+        {
+          "customerName": "Frank Doe",
+          "customerAddress": "3455 Kearny Villa Rd, San Diego, CA 92123",
+          "zip": "92123",
+          "territory": "East San Diego",
+          "lat": "32.807743",
+          "lng": "-117.155808",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/6"
+        },
+        {
+          "customerName": "Georgia Doe",
+          "customerAddress": "9225 Chesapeake Dr, San Diego, CA 92123",
+          "zip": "92123",
+          "territory": "East San Diego",
+          "lat": "32.831561",
+          "lng": "-117.144921",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/7"
+        },
+        {
+          "customerName": "Henry Doe",
+          "customerAddress": "2750 Wheatstone St, San Diego, CA 92111",
+          "zip": "92111",
+          "territory": "East San Diego",
+          "lat": "32.791939",
+          "lng": "-117.169185",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/8"
+        }
+      ]
     },
     {
       "territoryName": "South San Diego",
-      "lat": 32.640054,
-      "long": -117.084196,
-      "totalZipCodes": 9,
-      "addresses": []
+      "lat": "32.753345",
+      "long": "-117.192886",
+      "totalZipCodes": 8,
+      "addresses": [
+        {
+          "customerName": "Isabel Doe",
+          "customerAddress": "2335 Camino Del Rio S, San Diego, CA 92108",
+          "zip": "92108",
+          "territory": "South San Diego",
+          "lat": "32.767975",
+          "lng": "-117.165193",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/1"
+        },
+        {
+          "customerName": "Jack Doe",
+          "customerAddress": "2130 San Diego Ave, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "South San Diego",
+          "lat": "32.751252",
+          "lng": "-117.193525",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/2"
+        },
+        {
+          "customerName": "Kathy Doe",
+          "customerAddress": "3425 Rosecrans St, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "South San Diego",
+          "lat": "32.753851",
+          "lng": "-117.207713",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/3"
+        },
+        {
+          "customerName": "Liam Doe",
+          "customerAddress": "3555 Rosecrans St, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "South San Diego",
+          "lat": "32.754199",
+          "lng": "-117.211480",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/4"
+        },
+        {
+          "customerName": "Mia Doe",
+          "customerAddress": "2650 Camino del Rio N, San Diego, CA 92108",
+          "zip": "92108",
+          "territory": "South San Diego",
+          "lat": "32.773179",
+          "lng": "-117.153620",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/5"
+        },
+        {
+          "customerName": "Nathan Doe",
+          "customerAddress": "3111 Sports Arena Blvd, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "South San Diego",
+          "lat": "32.754484",
+          "lng": "-117.212504",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/6"
+        },
+        {
+          "customerName": "Olivia Doe",
+          "customerAddress": "2185 Station Village Way, San Diego, CA 92108",
+          "zip": "92108",
+          "territory": "South San Diego",
+          "lat": "32.771748",
+          "lng": "-117.156762",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/7"
+        },
+        {
+          "customerName": "Peter Doe",
+          "customerAddress": "1775 Hancock St, San Diego, CA 92110",
+          "zip": "92110",
+          "territory": "South San Diego",
+          "lat": "32.753345",
+          "lng": "-117.192886",
+          "color": "Black",
+          "hex": "000",
+          "linkToCustomer": "http://example.com/customer/8"
+        }
+      ]
     }
   ]
 }

@@ -19,7 +19,7 @@ function updateCustomerCount(territory) {
 }
 
 // Create buttons for each territory
-const createTerritoryButtons = () => {
+function createTerritoryButtons() {
   data.data.forEach(territory => {
     const button = document.createElement('button');
     button.textContent = territory.territoryName;
@@ -27,21 +27,22 @@ const createTerritoryButtons = () => {
     button.onclick = () => handleUserChoice(territory.territoryName);
     buttonContainer.appendChild(button);
   });
-};
+}
 
 // Handle user's territory choice
-const handleUserChoice = choice => {
+function handleUserChoice(choice) {
   const chosenTerritory = data.data.find(t => t.territoryName === choice);
   if (chosenTerritory) {
+    const zoomLevel = setZoomLevel(chosenTerritory.territoryName);
     console.log(chosenTerritory);
     updateCustomerCount(chosenTerritory);
     pageHeaderTerritoryName.textContent = chosenTerritory.territoryName;
     toggleUIElements(true);
-    initMap(chosenTerritory);
+    initMap(chosenTerritory, zoomLevel);
   } else {
     console.error('Chosen territory not found');
   }
-};
+}
 
 function showElement(element) {
   element.classList.add('show');
@@ -63,6 +64,19 @@ function toggleUIElements(showMap) {
     hideElement(mapDisplay);
     showElement(selectContainer);
     showElement(pageFooter);
+  }
+}
+
+function setZoomLevel(territory) {
+  if (territory === 'North San Diego') return 15;
+  else if (territory === 'South San Diego') {
+    return 14;
+  } else if (territory === 'West San Diego') {
+    return 13;
+  } else if (territory === 'East San Diego') {
+    return 14;
+  } else {
+    return 9;
   }
 }
 
