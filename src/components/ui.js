@@ -152,7 +152,7 @@ function createLegend(customerArr) {
     };
 
     Object.assign(circleEl.style, styles);
-    circleEl.className = 'btn m-2 p-3';
+    circleEl.className = 'circle-button btn m-2 p-3';
     territoryLegend.appendChild(circleEl);
 
     createModal(circleEl, terrName, terrColor);

@@ -258,15 +258,40 @@ textarea {
 
 @media (max-width: 600px) {
   html {
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .home {
     padding: 2em;
+    height: 100vh;
+  }
+
+  .circle-button {
+    width: 50px;
+    height: 50px;
   }
 
   .button-container {
     flex-direction: column;
+  }
+
+  .H_ib_body {
+    width: 180px;
+  }
+
+  .H_ib_content {
+    font-size: 11px;
+  }
+
+  /* X marker on bubble */
+  .H_ib_close {
+    position: revert;
+    padding: 0.5em;
+  }
+
+  .H_ib_close svg.H_icon {
+    border: 2px solid gray;
+    padding: 0.5em;
   }
 }
 
