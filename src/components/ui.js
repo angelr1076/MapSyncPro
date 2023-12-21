@@ -64,38 +64,26 @@ function createModal(el, territory, color) {
   const modalBody = document.querySelector('#modal-body-content');
   let isModalOpen = false;
 
-  const increaseOpacity = () => {
-    el.style.opacity = '60%';
-  };
-
-  const decreaseOpacity = () => {
-    el.style.opacity = '100%';
-  };
-
   const toggleModal = () => {
-    if (!isModalOpen) {
+    if (isModalOpen) {
+      modal.style.display = 'none';
+    } else {
       modal.style.display = 'block';
       modalHeader.innerHTML = territory;
       modalBody.innerHTML = color;
-      isModalOpen = true;
-    } else {
+    }
+    isModalOpen = !isModalOpen;
+  };
+
+  const hideModal = e => {
+    if (e.target === modal || e.target === window) {
       modal.style.display = 'none';
       isModalOpen = false;
     }
   };
 
-  // Event to handle opening/closing modal
   el.addEventListener('click', toggleModal);
-
-  // Close modal when clicking outside, only if it's open
-  window.addEventListener('click', e => {
-    if (e.target === modal && isModalOpen) {
-      toggleModal();
-    }
-  });
-
-  el.addEventListener('mouseenter', increaseOpacity);
-  el.addEventListener('mouseleave', decreaseOpacity);
+  window.addEventListener('click', hideModal);
 }
 
 function createLegend(customerArr) {
