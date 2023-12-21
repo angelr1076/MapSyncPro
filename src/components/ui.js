@@ -62,6 +62,7 @@ function createModal(el, territory, color) {
   const modal = document.querySelector('#legendModal');
   const modalHeader = document.querySelector('#modal-header-content');
   const modalBody = document.querySelector('#modal-body-content');
+  let touchHappened = false;
 
   const increaseOpacity = () => {
     el.style.opacity = '60%';
@@ -71,22 +72,37 @@ function createModal(el, territory, color) {
     el.style.opacity = '100%';
   };
 
-  // When the user clicks the button, open the modal
   const showModal = () => {
-    modal.style.display = 'block';
-    modalHeader.innerHTML = territory;
-    modalBody.innerHTML = color;
+    if (!touchHappened) {
+      modal.style.display = 'block';
+      modalHeader.innerHTML = territory;
+      modalBody.innerHTML = color;
+    }
+    touchHappened = false;
   };
 
-  // When the user clicks anywhere outside of the modal, close it
   const removeStyle = e => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   };
 
-  el.addEventListener('touchstart', increaseOpacity);
-  el.addEventListener('touchend', decreaseOpacity);
+  // Event listeners for desktop
+  el.addEventListener('mouseenter', increaseOpacity);
+  el.addEventListener('mouseleave', decreaseOpacity);
+
+  // Event listeners for mobile
+  el.addEventListener('touchstart', () => {
+    touchHappened = true;
+    increaseOpacity();
+  });
+  el.addEventListener('touchend', () => {
+    decreaseOpacity();
+    setTimeout(() => {
+      touchHappened = false;
+    }, 300);
+  });
+
   el.addEventListener('click', showModal);
   window.addEventListener('click', removeStyle);
 }
