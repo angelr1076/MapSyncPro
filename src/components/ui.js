@@ -92,14 +92,15 @@ function createModal(el, territory, color) {
     showModal();
   };
 
-  // Mouse events
+  // Desktop mouse events
   el.addEventListener('mouseenter', increaseOpacity);
   el.addEventListener('mouseleave', decreaseOpacity);
   el.addEventListener('click', handleClick);
 
-  // Touch events
+  // Mobile touch events
   el.addEventListener('touchend', handleTouch);
 
+  // Close modal when clicking outside
   window.addEventListener('click', hideModal);
 }
 
