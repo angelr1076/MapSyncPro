@@ -1,5 +1,6 @@
 import { initMap } from './map.js';
 import data from '../data/territories.json';
+import allData from '../data/allTerritories.json';
 import '../styles/style.css';
 
 const selectContainer = document.querySelector('#select-container');
@@ -27,20 +28,126 @@ function createTerritoryButtons() {
     button.onclick = () => handleUserChoice(territory.territoryName);
     buttonContainer.appendChild(button);
   });
+
+  const allButton = document.createElement('button');
+  allButton.textContent = 'All Territories';
+  allButton.classList.add('btn', 'm-2');
+  allButton.onclick = () => handleUserChoice('All Territories');
+  buttonContainer.appendChild(allButton);
 }
 
 // Handle user's territory choice
 function handleUserChoice(choice) {
-  const chosenTerritory = data.data.find(t => t.territoryName === choice);
+  let chosenTerritory;
+  choice !== 'All Territories'
+    ? (chosenTerritory = data)
+    : (chosenTerritory = allData);
+  chosenTerritory = chosenTerritory.data.find(t => t.territoryName === choice);
+
   if (chosenTerritory) {
     const zoomLevel = setZoomLevel(chosenTerritory.territoryName);
-    console.log(chosenTerritory);
     updateCustomerCount(chosenTerritory);
     pageHeaderTerritoryName.textContent = chosenTerritory.territoryName;
     toggleUIElements(true);
     initMap(chosenTerritory, zoomLevel);
+    choice === 'All Territories'
+      ? createLegend(chosenTerritory)
+      : hideElement(pageFooter);
   } else {
     console.error('Chosen territory not found');
+  }
+}
+
+function createModal(el, territory, color, increase, decrease, show, remove) {
+  const modal = document.querySelector('#legendModal');
+  const modalHeader = document.querySelector('#modal-header-content');
+  const modalBody = document.querySelector('#modal-body-content');
+
+  const increaseOpacity = () => {
+    el.style.opacity = '60%';
+  };
+
+  const decreaseOpacity = () => {
+    el.style.opacity = '100%';
+  };
+
+  // When the user clicks the button, open the modal
+  const showModal = () => {
+    modal.style.display = 'block';
+    modalHeader.innerHTML = territory;
+    modalBody.innerHTML = color;
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  const removeStyle = e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  el.addEventListener('mouseenter', increaseOpacity);
+  el.addEventListener('mouseleave', decreaseOpacity);
+  el.addEventListener('click', showModal);
+  window.addEventListener('click', removeStyle);
+}
+
+function createLegend(customerArr) {
+  const territoryLegend = document.querySelector('#legend');
+  territoryLegend.innerHTML = '';
+  showElement(pageFooter);
+
+  customerArr = customerArr.addresses;
+
+  const colorArr = [];
+  const uniqueTerritory = [
+    ...new Set(
+      customerArr
+        .map(unique => unique.territory)
+        .filter(unique => unique.length > 0)
+    ),
+  ];
+
+  const uniqueColors = [
+    ...new Set(
+      customerArr
+        .map(unique => unique.color)
+        .filter(unique => unique.length > 0)
+    ),
+  ];
+
+  const uniqueHex = [
+    ...new Set(
+      customerArr.map(unique => unique.hex).filter(unique => unique.length > 0)
+    ),
+  ];
+
+  colorArr.push({
+    terr: uniqueTerritory,
+    color: uniqueColors,
+    hexCode: uniqueHex,
+  });
+
+  const { terr, color, hexCode } = colorArr[0];
+
+  for (let item in hexCode) {
+    let hexColorChoice = hexCode[item];
+    const terrName = terr[item];
+    const terrColor = color[item];
+    const circleEl = document.createElement('btn');
+
+    const styles = {
+      border: '3px solid #808080',
+      backgroundColor: `#${hexColorChoice}`,
+      cursor: 'pointer',
+      borderRadius: '50%',
+      color: `#fff`,
+    };
+
+    Object.assign(circleEl.style, styles);
+    circleEl.className = 'btn m-2 p-3';
+    territoryLegend.appendChild(circleEl);
+
+    createModal(circleEl, terrName, terrColor);
   }
 }
 
@@ -59,24 +166,25 @@ function toggleUIElements(showMap) {
   if (showMap) {
     showElement(mapDisplay);
     hideElement(selectContainer);
-    hideElement(pageFooter);
   } else {
     hideElement(mapDisplay);
     showElement(selectContainer);
-    showElement(pageFooter);
   }
 }
 
 function setZoomLevel(territory) {
-  if (territory === 'North San Diego') return 15;
+  // Check for screen width
+  const isSmallScreen = window.innerWidth <= 600;
+
+  if (territory === 'North San Diego') return isSmallScreen ? 13 : 15;
   else if (territory === 'South San Diego') {
-    return 14;
+    return isSmallScreen ? 12 : 14;
   } else if (territory === 'West San Diego') {
-    return 13;
+    return isSmallScreen ? 11 : 13;
   } else if (territory === 'East San Diego') {
-    return 14;
-  } else {
-    return 9;
+    return isSmallScreen ? 12 : 14;
+  } else if (territory === 'All Territories') {
+    return isSmallScreen ? 9 : 10;
   }
 }
 

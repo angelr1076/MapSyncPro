@@ -1,10 +1,10 @@
 {
   "data": [
     {
-      "territoryName": "North San Diego",
-      "lat": "33.158093",
-      "long": "-117.350594",
-      "totalZipCodes": 9,
+      "territoryName": "All Territories",
+      "lat": "32.860990",
+      "long": "-117.133930",
+      "totalZipCodes": 34,
       "addresses": [
         {
           "customerName": "Alex Smith",
@@ -104,15 +104,7 @@
           "color": "Black",
           "hex": "000",
           "linkToCustomer": "http://example.com/customer/129"
-        }
-      ]
-    },
-    {
-      "territoryName": "East San Diego",
-      "lat": "32.792469",
-      "long": "-117.038747",
-      "totalZipCodes": 8,
-      "addresses": [
+        },
         {
           "customerName": "Alice Doe",
           "customerAddress": "6200 Lake Arrowhead Dr, San Diego, CA 92119",
@@ -200,22 +192,14 @@
           "color": "Crimson",
           "hex": "dc143c",
           "linkToCustomer": "http://example.com/customer/8"
-        }
-      ]
-    },
-    {
-      "territoryName": "West San Diego",
-      "lat": 32.7898409,
-      "long": -117.1676463,
-      "totalZipCodes": 9,
-      "addresses": [
+        },
         {
           "customerName": "Alice Doe",
           "customerAddress": "9210 Sky Park Ct, San Diego, CA 92123",
           "zip": "92123",
-          "territory": "East San Diego",
-          "lat": "32.807255",
-          "lng": "-117.139591",
+          "territory": "West San Diego",
+          "lat": "32.815360",
+          "lng": "-117.128060",
           "color": "Green",
           "hex": "026440",
           "linkToCustomer": "http://example.com/customer/1"
@@ -235,7 +219,7 @@
           "customerName": "Bob Doe",
           "customerAddress": "5401 Linda Vista Rd, San Diego, CA 92110",
           "zip": "92110",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.767875",
           "lng": "-117.192405",
           "color": "Green",
@@ -246,7 +230,7 @@
           "customerName": "Charlie Doe",
           "customerAddress": "4380 Kearny Mesa Rd, San Diego, CA 92111",
           "zip": "92111",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.821907",
           "lng": "-117.154258",
           "color": "Green",
@@ -257,7 +241,7 @@
           "customerName": "David Doe",
           "customerAddress": "5500 Gaines St, San Diego, CA 92110",
           "zip": "92110",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.755943",
           "lng": "-117.209789",
           "color": "Green",
@@ -268,7 +252,7 @@
           "customerName": "Evelyn Doe",
           "customerAddress": "3091 Clairemont Dr, San Diego, CA 92117",
           "zip": "92117",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.797874",
           "lng": "-117.199530",
           "color": "Green",
@@ -279,7 +263,7 @@
           "customerName": "Frank Doe",
           "customerAddress": "3455 Kearny Villa Rd, San Diego, CA 92123",
           "zip": "92123",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.807743",
           "lng": "-117.155808",
           "color": "Green",
@@ -290,7 +274,7 @@
           "customerName": "Georgia Doe",
           "customerAddress": "9225 Chesapeake Dr, San Diego, CA 92123",
           "zip": "92123",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.831561",
           "lng": "-117.144921",
           "color": "Green",
@@ -301,21 +285,13 @@
           "customerName": "Henry Doe",
           "customerAddress": "2750 Wheatstone St, San Diego, CA 92111",
           "zip": "92111",
-          "territory": "East San Diego",
+          "territory": "West San Diego",
           "lat": "32.791939",
           "lng": "-117.169185",
           "color": "Green",
           "hex": "026440",
           "linkToCustomer": "http://example.com/customer/8"
-        }
-      ]
-    },
-    {
-      "territoryName": "South San Diego",
-      "lat": "32.753345",
-      "long": "-117.192886",
-      "totalZipCodes": 8,
-      "addresses": [
+        },
         {
           "customerName": "Isabel Doe",
           "customerAddress": "2335 Camino Del Rio S, San Diego, CA 92108",

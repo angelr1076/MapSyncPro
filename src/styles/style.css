@@ -24,6 +24,7 @@
   [data-theme='dark'] {
     --background-color: var(--black-blur);
     --button-background-color: var(--white);
+    --modal-background-color: var(--black-blur);
     --button-background-hover-color: var(--offwhite);
     --button-text-hover-color: var(--black);
     --text-color: var(--white);
@@ -33,6 +34,7 @@
   [data-theme='light'] {
     --background-color: var(--white);
     --button-background-color: var(--black-blur);
+    --modal-background-color: var(--white);
     --button-background-hover-color: var(--black-faded);
     --button-text-hover-color: var(--white);
     --text-color: var(--black);
@@ -185,6 +187,52 @@ textarea {
   display: none !important;
 }
 
+/* Modal */
+.modal-header,
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Modal Content */
+.modal-content {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: var(--modal-background-color);
+  color: var(--text-color);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* Marker  */
+.marker {
+  /* Set the marker size here */
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  /* Set the marker color here */
+  background: #aa3300;
+
+  display: inline-block;
+  border-bottom-right-radius: 0;
+  position: relative;
+  transform: rotate(45deg);
+
+  /* optional fanciness */
+  border: 1px solid #881100;
+}
+
 /* Info bubble  */
 .H_ib_content > div > h1,
 .H_ib_content > div > h2,
@@ -227,8 +275,12 @@ textarea {
 }
 
 @media (max-width: 600px) {
-  body {
-    font-size: 12px;
+  html {
+    font-size: 10px;
+  }
+
+  .home {
+    padding: 2em;
   }
 
   .button-container {
@@ -237,13 +289,13 @@ textarea {
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-  body {
+  html {
     font-size: 14px;
   }
 }
 
 @media (min-width: 901px) {
-  body {
+  html {
     font-size: 18px;
   }
 }
