@@ -73,30 +73,29 @@ function createModal(el, territory, color) {
   };
 
   const toggleModal = () => {
-    if (isModalOpen) {
-      modal.style.display = 'none';
-    } else {
+    if (!isModalOpen) {
       modal.style.display = 'block';
       modalHeader.innerHTML = territory;
       modalBody.innerHTML = color;
-    }
-    isModalOpen = !isModalOpen;
-  };
-
-  const hideModal = e => {
-    if (e.target === modal || e.target === window) {
+      isModalOpen = true;
+    } else {
       modal.style.display = 'none';
       isModalOpen = false;
     }
   };
 
-  // Desktop mouse events
-  el.addEventListener('mouseenter', increaseOpacity);
-  el.addEventListener('mouseleave', decreaseOpacity);
+  // Event to handle opening/closing modal
   el.addEventListener('click', toggleModal);
 
-  // Close modal when clicking outside
-  window.addEventListener('click', hideModal);
+  // Close modal when clicking outside, only if it's open
+  window.addEventListener('click', e => {
+    if (e.target === modal && isModalOpen) {
+      toggleModal();
+    }
+  });
+
+  el.addEventListener('mouseenter', increaseOpacity);
+  el.addEventListener('mouseleave', decreaseOpacity);
 }
 
 function createLegend(customerArr) {
