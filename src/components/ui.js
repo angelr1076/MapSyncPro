@@ -62,7 +62,6 @@ function createModal(el, territory, color) {
   const modal = document.querySelector('#legendModal');
   const modalHeader = document.querySelector('#modal-header-content');
   const modalBody = document.querySelector('#modal-body-content');
-  let touchHappened = false;
 
   const increaseOpacity = () => {
     el.style.opacity = '60%';
@@ -73,38 +72,35 @@ function createModal(el, territory, color) {
   };
 
   const showModal = () => {
-    if (!touchHappened) {
-      modal.style.display = 'block';
-      modalHeader.innerHTML = territory;
-      modalBody.innerHTML = color;
-    }
-    touchHappened = false;
+    modal.style.display = 'block';
+    modalHeader.innerHTML = territory;
+    modalBody.innerHTML = color;
   };
 
-  const removeStyle = e => {
+  const hideModal = e => {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
   };
 
-  // Event listeners for desktop
+  const handleClick = () => {
+    showModal();
+  };
+
+  const handleTouch = e => {
+    e.preventDefault();
+    showModal();
+  };
+
+  // Mouse events
   el.addEventListener('mouseenter', increaseOpacity);
   el.addEventListener('mouseleave', decreaseOpacity);
+  el.addEventListener('click', handleClick);
 
-  // Event listeners for mobile
-  el.addEventListener('touchstart', () => {
-    touchHappened = true;
-    increaseOpacity();
-  });
-  el.addEventListener('touchend', () => {
-    decreaseOpacity();
-    setTimeout(() => {
-      touchHappened = false;
-    }, 300);
-  });
+  // Touch events
+  el.addEventListener('touchend', handleTouch);
 
-  el.addEventListener('click', showModal);
-  window.addEventListener('click', removeStyle);
+  window.addEventListener('click', hideModal);
 }
 
 function createLegend(customerArr) {
