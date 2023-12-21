@@ -1,4 +1,4 @@
-# Map Sync Pro
+# Map Sync Pro [![Netlify Status](https://api.netlify.com/api/v1/badges/547a5fad-3ed0-4fce-a81f-958d2b091bad/deploy-status)](https://app.netlify.com/sites/mapsyncpro/deploys)
 
 Dynamic Mapping Tool
 
