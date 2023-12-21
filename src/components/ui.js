@@ -83,22 +83,13 @@ function createModal(el, territory, color) {
     }
   };
 
-  const handleClick = () => {
-    showModal();
-  };
-
-  const handleTouch = e => {
-    e.preventDefault();
-    showModal();
-  };
-
   // Desktop mouse events
   el.addEventListener('mouseenter', increaseOpacity);
   el.addEventListener('mouseleave', decreaseOpacity);
-  el.addEventListener('click', handleClick);
+  el.addEventListener('click', showModal);
 
   // Mobile touch events
-  el.addEventListener('touchend', handleTouch);
+  el.addEventListener('touchend', hideModal);
 
   // Close modal when clicking outside
   window.addEventListener('click', hideModal);
