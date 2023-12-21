@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      // favicon: './src/images/sunny.png',
+      favicon: './src/images/vector-map.jpeg',
       template: './src/index.html',
     }),
     new Dotenv({
