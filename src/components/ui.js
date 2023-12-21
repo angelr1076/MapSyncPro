@@ -62,6 +62,7 @@ function createModal(el, territory, color) {
   const modal = document.querySelector('#legendModal');
   const modalHeader = document.querySelector('#modal-header-content');
   const modalBody = document.querySelector('#modal-body-content');
+  let isModalOpen = false;
 
   const increaseOpacity = () => {
     el.style.opacity = '60%';
@@ -71,25 +72,28 @@ function createModal(el, territory, color) {
     el.style.opacity = '100%';
   };
 
-  const showModal = () => {
-    modal.style.display = 'block';
-    modalHeader.innerHTML = territory;
-    modalBody.innerHTML = color;
+  const toggleModal = () => {
+    if (isModalOpen) {
+      modal.style.display = 'none';
+    } else {
+      modal.style.display = 'block';
+      modalHeader.innerHTML = territory;
+      modalBody.innerHTML = color;
+    }
+    isModalOpen = !isModalOpen;
   };
 
   const hideModal = e => {
-    if (e.target === modal) {
+    if (e.target === modal || e.target === window) {
       modal.style.display = 'none';
+      isModalOpen = false;
     }
   };
 
   // Desktop mouse events
   el.addEventListener('mouseenter', increaseOpacity);
   el.addEventListener('mouseleave', decreaseOpacity);
-  el.addEventListener('click', showModal);
-
-  // Mobile touch events
-  el.addEventListener('touchend', hideModal);
+  el.addEventListener('click', toggleModal);
 
   // Close modal when clicking outside
   window.addEventListener('click', hideModal);
