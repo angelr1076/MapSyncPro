@@ -58,7 +58,7 @@ function handleUserChoice(choice) {
   }
 }
 
-function createModal(el, territory, color, increase, decrease, show, remove) {
+function createModal(el, territory, color) {
   const modal = document.querySelector('#legendModal');
   const modalHeader = document.querySelector('#modal-header-content');
   const modalBody = document.querySelector('#modal-body-content');
@@ -85,8 +85,8 @@ function createModal(el, territory, color, increase, decrease, show, remove) {
     }
   };
 
-  el.addEventListener('mouseenter', increaseOpacity);
-  el.addEventListener('mouseleave', decreaseOpacity);
+  el.addEventListener('touchstart', increaseOpacity);
+  el.addEventListener('touchend', decreaseOpacity);
   el.addEventListener('click', showModal);
   window.addEventListener('click', removeStyle);
 }
