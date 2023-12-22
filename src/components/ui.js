@@ -63,27 +63,39 @@ function createModal(el, territory, color) {
   const modalHeader = document.querySelector('#modal-header-content');
   const modalBody = document.querySelector('#modal-body-content');
   let isModalOpen = false;
+  let modalTimeout;
 
-  const toggleModal = () => {
+  const showModal = () => {
+    modal.style.display = 'block';
+    modalHeader.innerHTML = territory;
+    modalBody.innerHTML = color;
+    modal.classList.add('animatein');
+    modal.classList.remove('animateout');
+    isModalOpen = true;
+
+    modalTimeout = setTimeout(() => {
+      closeModal();
+    }, 1250);
+  };
+
+  const closeModal = () => {
     if (isModalOpen) {
-      modal.style.display = 'none';
-    } else {
-      modal.style.display = 'block';
-      modalHeader.innerHTML = territory;
-      modalBody.innerHTML = color;
-    }
-    isModalOpen = !isModalOpen;
-  };
-
-  const hideModal = e => {
-    if (e.target === modal || e.target === window) {
-      modal.style.display = 'none';
+      modal.classList.add('animateout');
+      modal.classList.remove('animatein');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400);
       isModalOpen = false;
+      clearTimeout(modalTimeout);
     }
   };
 
-  el.addEventListener('click', toggleModal);
-  window.addEventListener('click', hideModal);
+  el.addEventListener('click', showModal);
+  window.addEventListener('click', e => {
+    if (e.target === modal || e.target === window) {
+      closeModal();
+    }
+  });
 }
 
 function createLegend(customerArr) {

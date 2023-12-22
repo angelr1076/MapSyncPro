@@ -1,11 +1,11 @@
 import { createTerritoryButtons, toggleMode } from './components/ui.js';
 
-// Initialize the app and populate the territory selection dropdown
+// Init the app and populate the territory selection buttons
 function initApp() {
   createTerritoryButtons();
   toggleMode();
 }
-// Initial application setup
+
 initApp();
 
 document.addEventListener('DOMContentLoaded', () => {

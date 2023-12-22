@@ -198,11 +198,18 @@ textarea {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: var(--modal-background-color);
   color: var(--text-color);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
 }
 
-/* Add Animation */
+.animatein {
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+}
+
+.animateout {
+  animation-name: animateout;
+  animation-duration: 0.5s;
+}
+
 @keyframes animatetop {
   from {
     top: -300px;
@@ -212,6 +219,17 @@ textarea {
   to {
     top: 0;
     opacity: 1;
+  }
+}
+
+@keyframes animateout {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: -300px;
+    opacity: 0;
   }
 }
 
