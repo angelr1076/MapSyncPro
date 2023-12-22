@@ -7,7 +7,7 @@
       "totalZipCodes": 34,
       "addresses": [
         {
-          "customerName": "Alex Smith",
+          "customerName": "Alexis Doe",
           "customerAddress": "456 El Camino Real, San Diego, CA 92024",
           "zip": "92024",
           "territory": "North San Diego",
