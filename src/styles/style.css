@@ -260,10 +260,6 @@ textarea {
   animation: fadeIn 0.4s ease-out forwards;
 }
 
-.H_ib_body:hover {
-  /* cursor: pointer; */
-}
-
 .H_ib_tail::after {
   border-style: hidden;
 }
