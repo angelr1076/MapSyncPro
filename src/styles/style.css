@@ -233,6 +233,17 @@ textarea {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Info bubble  */
 .H_ib_content > div > h1,
 .H_ib_content > div > h2,
@@ -245,10 +256,12 @@ textarea {
   height: auto;
   font-weight: 800;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 .H_ib_body:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .H_ib_tail::after {

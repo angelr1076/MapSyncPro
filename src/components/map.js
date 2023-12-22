@@ -15,50 +15,6 @@ function addIcon(color, opacity = 'o_100', w = 32, h = 32) {
   );
 }
 
-// Add markers to the map
-function addMarkersToMap(customers) {
-  let group = new H.map.Group();
-
-  customers.forEach(customer => {
-    const icon = addIcon(customer.hex, 'o_65', 24, 24);
-    const customerMarker = new H.map.Marker(
-      {
-        lat: parseFloat(customer.lat),
-        lng: parseFloat(customer.lng),
-      },
-      { icon: icon }
-    );
-
-    const bubbleHtml = `
-      <div>
-        <b>${customer.customerName}</b><br>
-        <b>${customer.customerAddress}</b><br>
-        <b>${customer.zip}</b><br>
-        <b>${customer.territory}</b><br>
-        <hr>
-        <b><a href="${customer.linkToCustomer}" target="_blank">Weblink</a></b> 
-      </div>`;
-
-    customerMarker.setData(bubbleHtml);
-    group.addObject(customerMarker);
-  });
-
-  map.addObject(group);
-
-  group.addEventListener(
-    'tap',
-    function (evt) {
-      const bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
-        content: evt.target.getData(),
-      });
-
-      ui.getBubbles().forEach(bub => ui.removeBubble(bub));
-      ui.addBubble(bubble);
-    },
-    false
-  );
-}
-
 // Initialize HERE Map
 function initMap(chosenTerritory, zoom = 14) {
   const lat = parseFloat(chosenTerritory.lat);
@@ -89,6 +45,52 @@ function initMap(chosenTerritory, zoom = 14) {
   }
 
   addMarkersToMap(chosenTerritory.addresses);
+}
+
+// Add markers to the map
+function addMarkersToMap(customers) {
+  let group = new H.map.Group();
+
+  customers.forEach(customer => {
+    const icon = addIcon(customer.hex, 'o_65', 24, 24);
+    const customerLat = parseFloat(customer.lat);
+    const customerLng = parseFloat(customer.lng);
+    const customerMarker = new H.map.Marker(
+      { lat: customerLat, lng: customerLng },
+      { icon: icon }
+    );
+
+    const bubbleHtml = `
+      <div>
+        <b>${customer.customerName}</b><br>
+        <b>${customer.customerAddress}</b><br>
+        <b>${customer.zip}</b><br>
+        <b>${customer.territory}</b><br>
+        <hr>
+        <b><a href="${customer.linkToCustomer}" target="_blank">Weblink</a></b> 
+      </div>`;
+
+    customerMarker.setData(bubbleHtml);
+    group.addObject(customerMarker);
+
+    // Re-center the map when a marker is tapped
+    customerMarker.addEventListener('tap', function (evt) {
+      const bubble = new H.ui.InfoBubble(
+        { lat: customerLat, lng: customerLng },
+        {
+          content: evt.target.getData(),
+        }
+      );
+
+      ui.getBubbles().forEach(bub => ui.removeBubble(bub));
+      ui.addBubble(bubble);
+
+      // Move the map center to the marker's position
+      map.setCenter({ lat: customerLat, lng: customerLng }, true);
+    });
+  });
+
+  map.addObject(group);
 }
 
 export { initMap };
