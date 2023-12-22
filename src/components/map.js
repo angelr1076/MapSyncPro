@@ -1,3 +1,4 @@
+import { getCustomers } from './api.js';
 import '../styles/style.css';
 
 // HERE Map
@@ -48,13 +49,33 @@ function initMap(chosenTerritory, zoom = 14) {
 }
 
 // Add markers to the map
-function addMarkersToMap(customers) {
+async function addMarkersToMap(customers) {
   let group = new H.map.Group();
+  try {
+    const qbCustomers = await getCustomers();
+    console.log(qbCustomers);
+    // Rest of your code...
+  } catch (error) {
+    console.error('Error fetching customers:', error);
+  }
 
   customers.forEach(customer => {
-    const icon = addIcon(customer.hex, 'o_65', 24, 24);
-    const customerLat = parseFloat(customer.lat);
-    const customerLng = parseFloat(customer.lng);
+    const {
+      lat,
+      lng,
+      hex,
+      firstName,
+      lastName,
+      address_1,
+      city,
+      state,
+      postalCode,
+      territory,
+      linkToCustomer,
+    } = customer;
+    const icon = addIcon(hex, 'o_65', 24, 24);
+    const customerLat = parseFloat(lat);
+    const customerLng = parseFloat(lng);
     const customerMarker = new H.map.Marker(
       { lat: customerLat, lng: customerLng },
       { icon: icon }
@@ -62,12 +83,11 @@ function addMarkersToMap(customers) {
 
     const bubbleHtml = `
       <div>
-        <b>${customer.customerName}</b><br>
-        <b>${customer.customerAddress}</b><br>
-        <b>${customer.zip}</b><br>
-        <b>${customer.territory}</b><br>
+        <b>${firstName} ${lastName}</b><br>
+        <b>${address_1} ${city}, ${state} ${postalCode}</b><br>
+        <b>${territory}</b><br>
         <hr>
-        <b><a href="${customer.linkToCustomer}" target="_blank">Weblink</a></b> 
+        <b><a href="${linkToCustomer}" target="_blank">Weblink</a></b> 
       </div>`;
 
     customerMarker.setData(bubbleHtml);

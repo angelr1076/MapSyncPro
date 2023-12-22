@@ -1,6 +1,7 @@
 import { initMap } from './map.js';
 import data from '../data/territories.json';
 import allData from '../data/allTerritories.json';
+
 import '../styles/style.css';
 
 const selectContainer = document.querySelector('#select-container');
@@ -104,7 +105,6 @@ function createLegend(customerArr) {
   showElement(pageFooter);
 
   customerArr = customerArr.addresses;
-
   const colorArr = [];
   const uniqueTerritory = [
     ...new Set(
