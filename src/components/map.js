@@ -53,8 +53,7 @@ async function addMarkersToMap(customers) {
   let group = new H.map.Group();
   try {
     const qbCustomers = await getCustomers();
-    console.log(qbCustomers);
-    // Rest of your code...
+    console.log(qbCustomers.data);
   } catch (error) {
     console.error('Error fetching customers:', error);
   }
