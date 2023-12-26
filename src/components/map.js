@@ -24,8 +24,8 @@ function initMap(territoryArray, territoryName, zoom = 14) {
     lat = lat;
     lng = lng;
   } else {
-    lat = 32.9862;
-    lng = -117.2708;
+    lat = territoryArray[0][49].value;
+    lng = territoryArray[0][50].value;
   }
 
   if (map) {

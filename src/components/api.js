@@ -15,7 +15,7 @@ const customerData = {
   // 11 first name, 12 job title, 13 last name, 17 phone, 22 company,
   // 30 address, 38 lat, 39 long, 40 territory, 41 color, 42 hex.
   // 43 linkToCustomer, 44 email, 47 territoryLat, 48 territoryLong
-  select: [11, 12, 13, 17, 22, 30, 38, 39, 40, 41, 42, 43, 44, 47, 48],
+  select: [11, 12, 13, 17, 22, 30, 38, 39, 40, 41, 42, 43, 44, 47, 48, 49, 50],
 };
 
 // Fetch customer data from the API
