@@ -5,6 +5,7 @@ import '../styles/style.css';
 const backButton = document.querySelector('#back-button');
 const lightModeButton = document.querySelector('#light-mode-icon');
 const darkModeButton = document.querySelector('#dark-mode-icon');
+let currentCenterCoords = null;
 
 // Create buttons for each territory
 async function createTerritoryButtons() {
@@ -33,6 +34,29 @@ async function createTerritoryButtons() {
   } catch (error) {
     console.error('Error fetching customer data:', error);
   }
+}
+
+function createRecenterButton(mapInstance, userChoice) {
+  const existingButton = document.getElementById('recenter-map-button');
+  if (existingButton) {
+    existingButton.remove();
+  }
+
+  const button = document.createElement('button');
+  button.innerText = 'Recenter Map';
+  button.id = 'recenter-map-button';
+  button.classList.add('btn', 'btn-secondary');
+  button.onclick = () => {
+    if (currentCenterCoords && mapInstance) {
+      mapInstance.setCenter({
+        lat: currentCenterCoords.lat,
+        lng: currentCenterCoords.lng,
+      });
+      mapInstance.setZoom(setZoomLevel(userChoice));
+    }
+  };
+
+  document.getElementById('page-footer').appendChild(button);
 }
 
 function createModal(el, territory, color) {
@@ -161,6 +185,7 @@ function updateCustomerCount(territory) {
 async function handleUserChoice(choice) {
   const pageHeaderTerritoryName = document.querySelector('#territory-name');
   const pageFooter = document.querySelector('#page-footer');
+
   try {
     const response = await getCustomers();
 
@@ -173,7 +198,6 @@ async function handleUserChoice(choice) {
     const chosenTerritoryData =
       choice !== 'All Territories'
         ? customerData.filter(customer => {
-            // console.log('Filtering customer:', customer[40]?.value);
             return customer[40]?.value === choice;
           })
         : customerData;
@@ -183,8 +207,18 @@ async function handleUserChoice(choice) {
       updateCustomerCount({ addresses: chosenTerritoryData });
       pageHeaderTerritoryName.textContent = choice;
       toggleUIElements(true);
-      // console.log('Chosen territory data:', chosenTerritoryData);
-      initMap(chosenTerritoryData, choice, zoomLevel);
+      const mapInstance = initMap(chosenTerritoryData, choice, zoomLevel);
+      createRecenterButton(mapInstance, choice);
+      currentCenterCoords = {
+        lat:
+          choice !== 'All Territories'
+            ? chosenTerritoryData[0][47].value
+            : chosenTerritoryData[0][49].value,
+        lng:
+          choice !== 'All Territories'
+            ? chosenTerritoryData[0][48].value
+            : chosenTerritoryData[0][50].value,
+      };
       choice === 'All Territories'
         ? createLegend({ addresses: chosenTerritoryData })
         : hideElement(pageFooter);

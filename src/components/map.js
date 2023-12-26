@@ -41,6 +41,7 @@ function initMap(territoryArray, territoryName, zoom = 14) {
   }
 
   addMarkersToMap(territoryArray);
+  return map;
 }
 
 // Add markers to the map
