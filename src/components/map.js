@@ -1,3 +1,4 @@
+import { recenterMap } from './ui.js';
 import '../styles/style.css';
 
 // HERE Map
@@ -17,31 +18,22 @@ function addIcon(color, opacity = 'o_100', w = 32, h = 32) {
 
 // Initialize HERE Map
 function initMap(territoryArray, territoryName, zoom = 14) {
-  let lat = territoryArray[0][47].value;
-  let lng = territoryArray[0][48].value;
-  if (territoryName !== 'All Territories') {
-    lat = lat;
-    lng = lng;
-  } else {
-    lat = territoryArray[0][49].value;
-    lng = territoryArray[0][50].value;
-  }
+  const territoryBool = territoryName === 'All Territories';
 
   if (map) {
     map.removeObjects(map.getObjects());
-    map.setCenter({ lat, lng });
-
+    recenterMap(territoryArray, territoryBool, map);
     map.setZoom(zoom);
   } else {
     map = new H.Map(
       document.querySelector('#map'),
       defaultLayers.vector.normal.map,
       {
-        center: { lat, lng },
         zoom,
         pixelRatio: window.devicePixelRatio || 1,
       }
     );
+    recenterMap(territoryArray, territoryBool, map);
 
     ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
     ui.setUnitSystem('imperial');

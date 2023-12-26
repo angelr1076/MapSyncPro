@@ -1,27 +1,14 @@
 import { initMap } from './map.js';
-import data from '../data/territories.json';
-import allData from '../data/allTerritories.json';
 import { getCustomers } from './api.js';
 import '../styles/style.css';
 
-const selectContainer = document.querySelector('#select-container');
-const buttonContainer = document.querySelector('#button-container');
 const backButton = document.querySelector('#back-button');
 const lightModeButton = document.querySelector('#light-mode-icon');
 const darkModeButton = document.querySelector('#dark-mode-icon');
-const mapDisplay = document.querySelector('#main');
-const pageFooter = document.querySelector('#page-footer');
-const pageHeaderTerritoryName = document.querySelector('#territory-name');
-const customerCountElement = document.querySelector('#customer-count');
-
-// Update customer count in the UI
-function updateCustomerCount(territory) {
-  const count = territory.addresses.length;
-  customerCountElement.textContent = `${count} Customers`;
-}
 
 // Create buttons for each territory
 async function createTerritoryButtons() {
+  const buttonContainer = document.querySelector('#button-container');
   try {
     const response = await getCustomers();
     const customerData = response.data;
@@ -45,43 +32,6 @@ async function createTerritoryButtons() {
     buttonContainer.appendChild(allTerritoriesButton);
   } catch (error) {
     console.error('Error fetching customer data:', error);
-  }
-}
-
-// Handle user's territory choice
-async function handleUserChoice(choice) {
-  try {
-    const response = await getCustomers();
-
-    if (!response || !response.data) {
-      throw new Error('Invalid response data');
-    }
-
-    const customerData = response.data;
-    // console.log('Choice:', choice);
-    const chosenTerritoryData =
-      choice !== 'All Territories'
-        ? customerData.filter(customer => {
-            // console.log('Filtering customer:', customer[40]?.value);
-            return customer[40]?.value === choice;
-          })
-        : customerData;
-
-    if (chosenTerritoryData.length > 0) {
-      const zoomLevel = setZoomLevel(choice);
-      updateCustomerCount({ addresses: chosenTerritoryData });
-      pageHeaderTerritoryName.textContent = choice;
-      toggleUIElements(true);
-      // console.log('Chosen territory data:', chosenTerritoryData);
-      initMap(chosenTerritoryData, choice, zoomLevel);
-      choice === 'All Territories'
-        ? createLegend({ addresses: chosenTerritoryData })
-        : hideElement(pageFooter);
-    } else {
-      console.error('Chosen territory not found');
-    }
-  } catch (error) {
-    console.error('Error in handleUserChoice:', error);
   }
 }
 
@@ -127,6 +77,7 @@ function createModal(el, territory, color) {
 
 function createLegend(customerArr) {
   const territoryLegend = document.querySelector('#legend');
+  const pageFooter = document.querySelector('#page-footer');
   territoryLegend.innerHTML = '';
   showElement(pageFooter);
   customerArr = customerArr.addresses;
@@ -186,6 +137,65 @@ function createLegend(customerArr) {
   }
 }
 
+function recenterMap(territoryData, isAllTerritories, mapObj) {
+  let lat, lng;
+
+  if (isAllTerritories) {
+    lat = territoryData[0][49].value;
+    lng = territoryData[0][50].value;
+  } else {
+    lat = territoryData[0][47].value;
+    lng = territoryData[0][48].value;
+  }
+
+  mapObj && mapObj.setCenter({ lat, lng });
+}
+
+// Update customer count in the UI
+function updateCustomerCount(territory) {
+  const customerCountElement = document.querySelector('#customer-count');
+  const count = territory.addresses.length;
+  customerCountElement.textContent = `${count} Customers`;
+}
+
+async function handleUserChoice(choice) {
+  const pageHeaderTerritoryName = document.querySelector('#territory-name');
+  const pageFooter = document.querySelector('#page-footer');
+  try {
+    const response = await getCustomers();
+
+    if (!response || !response.data) {
+      throw new Error('Invalid response data');
+    }
+
+    const customerData = response.data;
+    // console.log('Choice:', choice);
+    const chosenTerritoryData =
+      choice !== 'All Territories'
+        ? customerData.filter(customer => {
+            // console.log('Filtering customer:', customer[40]?.value);
+            return customer[40]?.value === choice;
+          })
+        : customerData;
+
+    if (chosenTerritoryData.length > 0) {
+      const zoomLevel = setZoomLevel(choice);
+      updateCustomerCount({ addresses: chosenTerritoryData });
+      pageHeaderTerritoryName.textContent = choice;
+      toggleUIElements(true);
+      // console.log('Chosen territory data:', chosenTerritoryData);
+      initMap(chosenTerritoryData, choice, zoomLevel);
+      choice === 'All Territories'
+        ? createLegend({ addresses: chosenTerritoryData })
+        : hideElement(pageFooter);
+    } else {
+      console.error('Chosen territory not found');
+    }
+  } catch (error) {
+    console.error('Error in handleUserChoice:', error);
+  }
+}
+
 function showElement(element) {
   element.classList.add('show');
   element.classList.remove('hidden');
@@ -198,6 +208,8 @@ function hideElement(element) {
 
 // Show or hide UI elements
 function toggleUIElements(showMap) {
+  const selectContainer = document.querySelector('#select-container');
+  const mapDisplay = document.querySelector('#main');
   if (showMap) {
     showElement(mapDisplay);
     hideElement(selectContainer);
@@ -246,4 +258,4 @@ backButton.addEventListener('click', () => {
   toggleUIElements(false);
 });
 
-export { createTerritoryButtons, toggleMode };
+export { createTerritoryButtons, toggleMode, recenterMap };
