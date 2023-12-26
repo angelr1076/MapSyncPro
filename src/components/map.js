@@ -18,18 +18,15 @@ function addIcon(color, opacity = 'o_100', w = 32, h = 32) {
 
 // Initialize HERE Map
 function initMap(chosenTerritory, zoom = 14) {
-  const lat = parseFloat(chosenTerritory.lat);
-  const lng = parseFloat(chosenTerritory.long);
+  const lat = chosenTerritory[0][47].value;
+  const lng = chosenTerritory[0][48].value;
 
   if (map) {
-    // Clear existing markers
     map.removeObjects(map.getObjects());
 
-    // Re-center the map to the new territory
     map.setCenter({ lat, lng });
     map.setZoom(zoom);
   } else {
-    // Initialize the map if it doesn't exist
     map = new H.Map(
       document.querySelector('#map'),
       defaultLayers.vector.normal.map,
@@ -45,71 +42,62 @@ function initMap(chosenTerritory, zoom = 14) {
     behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   }
 
-  addMarkersToMap(chosenTerritory.addresses);
+  addMarkersToMap(chosenTerritory);
 }
 
 // Add markers to the map
 async function addMarkersToMap(customers) {
   let group = new H.map.Group();
   try {
-    const qbCustomers = await getCustomers();
-    console.log(qbCustomers.data);
+    await customers.forEach(customer => {
+      const customerLat = parseFloat(customer[38].value);
+      const customerLng = parseFloat(customer[39].value);
+      const hex = customer[42].value;
+      const icon = addIcon(hex, 'o_65', 24, 24);
+      const customerMarker = new H.map.Marker(
+        { lat: customerLat, lng: customerLng },
+        { icon: icon }
+      );
+
+      const firstName = customer[11].value;
+      const lastName = customer[13].value;
+      const address_1 = customer[30].value;
+      const territory = customer[40].value;
+      const linkToCustomer = customer[44].value;
+
+      const bubbleHtml = `
+        <div>
+          <b>${firstName} ${lastName}</b><br>
+          <b>${address_1}</b><br>
+          <b>${territory}</b><br>
+          <hr>
+          <b><a href="${linkToCustomer}" target="_blank">Weblink</a></b>
+        </div>`;
+
+      customerMarker.setData(bubbleHtml);
+      group.addObject(customerMarker);
+
+      // Re-center the map when a marker is tapped
+      customerMarker.addEventListener('tap', function (evt) {
+        const bubble = new H.ui.InfoBubble(
+          { lat: customerLat, lng: customerLng },
+          {
+            content: evt.target.getData(),
+          }
+        );
+
+        ui.getBubbles().forEach(bub => ui.removeBubble(bub));
+        ui.addBubble(bubble);
+
+        // Move the map center to the marker's position
+        map.setCenter({ lat: customerLat, lng: customerLng }, true);
+      });
+    });
+
+    map.addObject(group);
   } catch (error) {
     console.error('Error fetching customers:', error);
   }
-
-  customers.forEach(customer => {
-    const {
-      lat,
-      lng,
-      hex,
-      firstName,
-      lastName,
-      address_1,
-      city,
-      state,
-      postalCode,
-      territory,
-      linkToCustomer,
-    } = customer;
-    const icon = addIcon(hex, 'o_65', 24, 24);
-    const customerLat = parseFloat(lat);
-    const customerLng = parseFloat(lng);
-    const customerMarker = new H.map.Marker(
-      { lat: customerLat, lng: customerLng },
-      { icon: icon }
-    );
-
-    const bubbleHtml = `
-      <div>
-        <b>${firstName} ${lastName}</b><br>
-        <b>${address_1} ${city}, ${state} ${postalCode}</b><br>
-        <b>${territory}</b><br>
-        <hr>
-        <b><a href="${linkToCustomer}" target="_blank">Weblink</a></b> 
-      </div>`;
-
-    customerMarker.setData(bubbleHtml);
-    group.addObject(customerMarker);
-
-    // Re-center the map when a marker is tapped
-    customerMarker.addEventListener('tap', function (evt) {
-      const bubble = new H.ui.InfoBubble(
-        { lat: customerLat, lng: customerLng },
-        {
-          content: evt.target.getData(),
-        }
-      );
-
-      ui.getBubbles().forEach(bub => ui.removeBubble(bub));
-      ui.addBubble(bubble);
-
-      // Move the map center to the marker's position
-      map.setCenter({ lat: customerLat, lng: customerLng }, true);
-    });
-  });
-
-  map.addObject(group);
 }
 
 export { initMap };

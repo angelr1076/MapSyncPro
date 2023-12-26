@@ -1,7 +1,7 @@
 import { initMap } from './map.js';
 import data from '../data/territories.json';
 import allData from '../data/allTerritories.json';
-
+import { getCustomers } from './api.js';
 import '../styles/style.css';
 
 const selectContainer = document.querySelector('#select-container');
@@ -21,41 +21,67 @@ function updateCustomerCount(territory) {
 }
 
 // Create buttons for each territory
-function createTerritoryButtons() {
-  data.data.forEach(territory => {
-    const button = document.createElement('button');
-    button.textContent = territory.territoryName;
-    button.classList.add('btn', 'm-2');
-    button.onclick = () => handleUserChoice(territory.territoryName);
-    buttonContainer.appendChild(button);
-  });
+async function createTerritoryButtons() {
+  try {
+    const response = await getCustomers();
+    const customerData = response.data;
 
-  const allButton = document.createElement('button');
-  allButton.textContent = 'All Territories';
-  allButton.classList.add('btn', 'm-2');
-  allButton.onclick = () => handleUserChoice('All Territories');
-  buttonContainer.appendChild(allButton);
+    const uniqueTerritories = new Set(
+      customerData.map(customer => customer[40].value)
+    );
+
+    uniqueTerritories.forEach(territoryName => {
+      const button = document.createElement('button');
+      button.textContent = territoryName;
+      button.classList.add('btn', 'm-2');
+      button.onclick = () => handleUserChoice(territoryName);
+      buttonContainer.appendChild(button);
+    });
+
+    const allTerritoriesButton = document.createElement('button');
+    allTerritoriesButton.textContent = 'All Territories';
+    allTerritoriesButton.classList.add('btn', 'm-2');
+    allTerritoriesButton.onclick = () => handleUserChoice('All Territories');
+    buttonContainer.appendChild(allTerritoriesButton);
+  } catch (error) {
+    console.error('Error fetching customer data:', error);
+  }
 }
 
 // Handle user's territory choice
-function handleUserChoice(choice) {
-  let chosenTerritory;
-  choice !== 'All Territories'
-    ? (chosenTerritory = data)
-    : (chosenTerritory = allData);
-  chosenTerritory = chosenTerritory.data.find(t => t.territoryName === choice);
+async function handleUserChoice(choice) {
+  try {
+    const response = await getCustomers();
 
-  if (chosenTerritory) {
-    const zoomLevel = setZoomLevel(chosenTerritory.territoryName);
-    updateCustomerCount(chosenTerritory);
-    pageHeaderTerritoryName.textContent = chosenTerritory.territoryName;
-    toggleUIElements(true);
-    initMap(chosenTerritory, zoomLevel);
-    choice === 'All Territories'
-      ? createLegend(chosenTerritory)
-      : hideElement(pageFooter);
-  } else {
-    console.error('Chosen territory not found');
+    if (!response || !response.data) {
+      throw new Error('Invalid response data');
+    }
+
+    const customerData = response.data;
+    // console.log('Choice:', choice);
+    const chosenTerritoryData =
+      choice !== 'All Territories'
+        ? customerData.filter(customer => {
+            // console.log('Filtering customer:', customer[40]?.value);
+            return customer[40]?.value === choice;
+          })
+        : customerData;
+
+    if (chosenTerritoryData.length > 0) {
+      const zoomLevel = setZoomLevel(choice);
+      updateCustomerCount({ addresses: chosenTerritoryData });
+      pageHeaderTerritoryName.textContent = choice;
+      toggleUIElements(true);
+      // console.log('Chosen territory data:', chosenTerritoryData);
+      initMap(chosenTerritoryData, zoomLevel);
+      choice === 'All Territories'
+        ? createLegend({ addresses: chosenTerritoryData })
+        : hideElement(pageFooter);
+    } else {
+      console.error('Chosen territory not found');
+    }
+  } catch (error) {
+    console.error('Error in handleUserChoice:', error);
   }
 }
 
@@ -103,13 +129,13 @@ function createLegend(customerArr) {
   const territoryLegend = document.querySelector('#legend');
   territoryLegend.innerHTML = '';
   showElement(pageFooter);
-
   customerArr = customerArr.addresses;
+
   const colorArr = [];
   const uniqueTerritory = [
     ...new Set(
       customerArr
-        .map(unique => unique.territory)
+        .map(unique => unique[40].value)
         .filter(unique => unique.length > 0)
     ),
   ];
@@ -117,14 +143,16 @@ function createLegend(customerArr) {
   const uniqueColors = [
     ...new Set(
       customerArr
-        .map(unique => unique.color)
+        .map(unique => unique[41].value)
         .filter(unique => unique.length > 0)
     ),
   ];
 
   const uniqueHex = [
     ...new Set(
-      customerArr.map(unique => unique.hex).filter(unique => unique.length > 0)
+      customerArr
+        .map(unique => unique[42].value)
+        .filter(unique => unique.length > 0)
     ),
   ];
 
