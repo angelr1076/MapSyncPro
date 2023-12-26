@@ -1,4 +1,3 @@
-import { getCustomers } from './api.js';
 import '../styles/style.css';
 
 // HERE Map
@@ -69,12 +68,16 @@ async function addMarkersToMap(customers) {
       const firstName = customer[11].value;
       const lastName = customer[13].value;
       const address_1 = customer[30].value;
+      const company = customer[22].value;
+      const phone = customer[17].value;
       const territory = customer[40].value;
       const linkToCustomer = customer[43].value;
 
       const bubbleHtml = `
         <div>
           <b>${firstName} ${lastName}</b><br>
+          <b>${company}</b><br>
+          <b>${phone}</b><br>
           <b>${address_1}</b><br>
           <b>${territory}</b><br>
           <hr>
