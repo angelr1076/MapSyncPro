@@ -137,7 +137,7 @@ function createLegend(customerArr) {
   }
 }
 
-function recenterMap(territoryData, isAllTerritories, mapObj) {
+function setCenter(territoryData, isAllTerritories, mapObj) {
   let lat, lng;
 
   if (isAllTerritories) {
@@ -258,4 +258,4 @@ backButton.addEventListener('click', () => {
   toggleUIElements(false);
 });
 
-export { createTerritoryButtons, toggleMode, recenterMap };
+export { createTerritoryButtons, toggleMode, setCenter };

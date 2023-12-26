@@ -1,4 +1,4 @@
-import { recenterMap } from './ui.js';
+import { setCenter } from './ui.js';
 import '../styles/style.css';
 
 // HERE Map
@@ -22,7 +22,7 @@ function initMap(territoryArray, territoryName, zoom = 14) {
 
   if (map) {
     map.removeObjects(map.getObjects());
-    recenterMap(territoryArray, territoryBool, map);
+    setCenter(territoryArray, territoryBool, map);
     map.setZoom(zoom);
   } else {
     map = new H.Map(
@@ -33,7 +33,7 @@ function initMap(territoryArray, territoryName, zoom = 14) {
         pixelRatio: window.devicePixelRatio || 1,
       }
     );
-    recenterMap(territoryArray, territoryBool, map);
+    setCenter(territoryArray, territoryBool, map);
 
     ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
     ui.setUnitSystem('imperial');
