@@ -73,7 +73,7 @@ async function handleUserChoice(choice) {
       pageHeaderTerritoryName.textContent = choice;
       toggleUIElements(true);
       // console.log('Chosen territory data:', chosenTerritoryData);
-      initMap(chosenTerritoryData, zoomLevel);
+      initMap(chosenTerritoryData, choice, zoomLevel);
       choice === 'All Territories'
         ? createLegend({ addresses: chosenTerritoryData })
         : hideElement(pageFooter);

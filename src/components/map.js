@@ -17,14 +17,21 @@ function addIcon(color, opacity = 'o_100', w = 32, h = 32) {
 }
 
 // Initialize HERE Map
-function initMap(chosenTerritory, zoom = 14) {
-  const lat = chosenTerritory[0][47].value;
-  const lng = chosenTerritory[0][48].value;
+function initMap(territoryArray, territoryName, zoom = 14) {
+  let lat = territoryArray[0][47].value;
+  let lng = territoryArray[0][48].value;
+  if (territoryName !== 'All Territories') {
+    lat = lat;
+    lng = lng;
+  } else {
+    lat = 32.9862;
+    lng = -117.2708;
+  }
 
   if (map) {
     map.removeObjects(map.getObjects());
-
     map.setCenter({ lat, lng });
+
     map.setZoom(zoom);
   } else {
     map = new H.Map(
@@ -42,7 +49,7 @@ function initMap(chosenTerritory, zoom = 14) {
     behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
   }
 
-  addMarkersToMap(chosenTerritory);
+  addMarkersToMap(territoryArray);
 }
 
 // Add markers to the map
@@ -63,7 +70,7 @@ async function addMarkersToMap(customers) {
       const lastName = customer[13].value;
       const address_1 = customer[30].value;
       const territory = customer[40].value;
-      const linkToCustomer = customer[44].value;
+      const linkToCustomer = customer[43].value;
 
       const bubbleHtml = `
         <div>
