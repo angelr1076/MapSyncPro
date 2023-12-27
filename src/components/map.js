@@ -80,7 +80,6 @@ async function addMarkersToMap(customers) {
       customerMarker.setData(bubbleHtml);
       group.addObject(customerMarker);
 
-      // Re-center the map when a marker is tapped
       customerMarker.addEventListener('tap', function (evt) {
         const bubble = new H.ui.InfoBubble(
           { lat: customerLat, lng: customerLng },
@@ -92,7 +91,7 @@ async function addMarkersToMap(customers) {
         ui.getBubbles().forEach(bub => ui.removeBubble(bub));
         ui.addBubble(bubble);
 
-        // Move the map center to the marker's position
+        // Re-center the map when a marker is tapped
         map.setCenter({ lat: customerLat, lng: customerLng }, true);
       });
     });

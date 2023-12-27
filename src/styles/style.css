@@ -315,6 +315,10 @@ textarea {
     border: 2px solid gray;
     padding: 0.5em;
   }
+
+  .instructions {
+    display: none !important;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

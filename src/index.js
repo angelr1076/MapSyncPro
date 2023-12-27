@@ -2,8 +2,12 @@ import { createTerritoryButtons, toggleMode } from './components/ui.js';
 
 // Init the app and populate the territory selection buttons
 async function initApp() {
-  await createTerritoryButtons();
-  toggleMode();
+  try {
+    await createTerritoryButtons();
+    toggleMode();
+  } catch (error) {
+    console.error('Error initializing the app:', error);
+  }
 }
 
 initApp();

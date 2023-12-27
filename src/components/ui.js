@@ -38,6 +38,7 @@ async function createTerritoryButtons() {
 
 function createRecenterButton(mapInstance, userChoice) {
   const existingButton = document.getElementById('recenter-map-button');
+  const pageFooter = document.querySelector('#page-footer');
   if (existingButton) {
     existingButton.remove();
   }
@@ -46,7 +47,7 @@ function createRecenterButton(mapInstance, userChoice) {
   button.innerText = 'Recenter Map';
   button.id = 'recenter-map-button';
   button.classList.add('btn', 'btn-secondary');
-  button.onclick = () => {
+  button.addEventListener('click', () => {
     if (currentCenterCoords && mapInstance) {
       mapInstance.setCenter({
         lat: currentCenterCoords.lat,
@@ -54,9 +55,9 @@ function createRecenterButton(mapInstance, userChoice) {
       });
       mapInstance.setZoom(setZoomLevel(userChoice));
     }
-  };
+  });
 
-  document.getElementById('page-footer').appendChild(button);
+  pageFooter.appendChild(button);
 }
 
 function createModal(el, territory, color) {
@@ -101,9 +102,10 @@ function createModal(el, territory, color) {
 
 function createLegend(customerArr) {
   const territoryLegend = document.querySelector('#legend');
-  const pageFooter = document.querySelector('#page-footer');
+  const instructions = document.querySelector('#instructions');
   territoryLegend.innerHTML = '';
-  showElement(pageFooter);
+  showElement(instructions);
+  showElement(territoryLegend);
   customerArr = customerArr.addresses;
 
   const colorArr = [];
@@ -139,10 +141,10 @@ function createLegend(customerArr) {
 
   const { terr, color, hexCode } = colorArr[0];
 
-  for (let item in hexCode) {
-    let hexColorChoice = hexCode[item];
-    const terrName = terr[item];
-    const terrColor = color[item];
+  hexCode.forEach((_, index) => {
+    let hexColorChoice = hexCode[index];
+    const terrName = terr[index];
+    const terrColor = color[index];
     const circleEl = document.createElement('btn');
 
     const styles = {
@@ -158,7 +160,7 @@ function createLegend(customerArr) {
     territoryLegend.appendChild(circleEl);
 
     createModal(circleEl, terrName, terrColor);
-  }
+  });
 }
 
 function setCenter(territoryData, isAllTerritories, mapObj) {
@@ -184,7 +186,8 @@ function updateCustomerCount(territory) {
 
 async function handleUserChoice(choice) {
   const pageHeaderTerritoryName = document.querySelector('#territory-name');
-  const pageFooter = document.querySelector('#page-footer');
+  const instructions = document.querySelector('#instructions');
+  const territoryLegend = document.querySelector('#legend');
 
   try {
     const response = await getCustomers();
@@ -194,7 +197,6 @@ async function handleUserChoice(choice) {
     }
 
     const customerData = response.data;
-    // console.log('Choice:', choice);
     const chosenTerritoryData =
       choice !== 'All Territories'
         ? customerData.filter(customer => {
@@ -219,9 +221,12 @@ async function handleUserChoice(choice) {
             ? chosenTerritoryData[0][48].value
             : chosenTerritoryData[0][50].value,
       };
-      choice === 'All Territories'
-        ? createLegend({ addresses: chosenTerritoryData })
-        : hideElement(pageFooter);
+      if (choice === 'All Territories') {
+        createLegend({ addresses: chosenTerritoryData });
+      } else {
+        hideElement(instructions);
+        hideElement(territoryLegend);
+      }
     } else {
       console.error('Chosen territory not found');
     }
@@ -269,6 +274,7 @@ function setZoomLevel(territory) {
   }
 }
 
+// Toggle light/dark mode
 function toggleMode() {
   const body = document.body;
   const lightIcon = lightModeButton;
